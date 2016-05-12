@@ -11,5 +11,6 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <CommonCrypto/CommonCrypto.h>
+#import "KeychainWrapper.h"
 
 #endif

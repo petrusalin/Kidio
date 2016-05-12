@@ -72,11 +72,13 @@ class LastfmLoginViewController: UIViewController, UITextFieldDelegate {
     func setupForLogin() {
         self.loginButton.setTitle("Login", forState: .Normal)
         self.passwordTextField.hidden = false
+        self.usernameTextField.text = ""
     }
     
     func setupForLogout() {
         self.loginButton.setTitle("Logout", forState: .Normal)
         self.passwordTextField.hidden = true
+        self.usernameTextField.text = LastfmManager.sharedInstance.loggedInUsername()
     }
     
     func performLogout() {

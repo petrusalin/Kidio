@@ -12,7 +12,8 @@ private let sharedManager = LastfmManager()
 
 
 class LastfmManager: NSObject {
-    private let tokenKey = "lastfmTokenKey"
+    private let keychain = KeychainWrapper()
+    private let usernameKey = "lastfmUsernameKey"
     private var lastFmCredential = LastfmCredential.init(key: "5fb7895d398515c93d6cc95056ca81ef", secret: "b318576b5b4c266977698d0b42f86adf")
     
     private override init() {
@@ -34,12 +35,13 @@ class LastfmManager: NSObject {
         return sharedManager
     }
     
-    func saveLastfmToken(token: String) {
-        NSUserDefaults.standardUserDefaults().setObject(token, forKey: self.tokenKey)
+    internal func saveLastfmToken(token: String) {
+        self.keychain.mySetObject(token, forKey: kSecValueData)
+        self.keychain.writeToKeychain()
     }
     
-    func lastfmToken() -> String? {
-        if let token =  NSUserDefaults.standardUserDefaults().objectForKey(self.tokenKey) as? String {
+    internal func lastfmToken() -> String? {
+        if let token = self.keychain.myObjectForKey(kSecValueData) as? String {
             return token
         }
         
@@ -47,11 +49,23 @@ class LastfmManager: NSObject {
     }
     
     func isLoggedIn() -> Bool {
-        return self.lastfmToken() != nil
+        return self.loggedInUsername() != nil
+    }
+    
+    func loggedInUsername() -> String? {
+        if let username = NSUserDefaults.standardUserDefaults().objectForKey(self.usernameKey) as? String {
+            return username
+        }
+        
+        return nil
+    }
+    
+    internal func saveLastfmUsername(username: String) {
+        NSUserDefaults.standardUserDefaults().setObject(username, forKey: self.usernameKey)
     }
     
     func logout() {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(self.tokenKey)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(self.usernameKey)
     }
     
     func loginWithUsername(username: String, password: String, completion: (error: NSError?) -> Void) {
@@ -61,6 +75,7 @@ class LastfmManager: NSObject {
             if let dict = response as? [String: AnyObject] {
                 if let key = dict["key"] as? String {
                     self.saveLastfmToken(key)
+                    self.saveLastfmUsername(username)
                 } else {
                     print("Could not get token")
                 }
