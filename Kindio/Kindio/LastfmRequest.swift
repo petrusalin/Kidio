@@ -8,12 +8,26 @@
 
 import UIKit
 
+struct LastfmCredential {
+    var appKey : String!
+    var secret : String!
+    
+    init(key : String, secret : String) {
+        self.appKey = key
+        self.secret = secret
+    }
+}
+
 internal class LastfmRequest: NSObject {
-    internal var key  = "5fb7895d398515c93d6cc95056ca81ef"
-    internal var secret = "b318576b5b4c266977698d0b42f86adf"
+    internal var credential : LastfmCredential!
+    internal var sessionToken : String!
     internal var lastfmMethod: LastfmMethod?
     internal var baseURL : String  {
         return "http://ws.audioscrobbler.com/2.0/"
+    }
+    
+    init(credential: LastfmCredential) {
+        self.credential = credential
     }
     
     func executeWithCompletionBlock(completion: (response: AnyObject?, error: NSError?) -> Void) {
@@ -53,7 +67,7 @@ internal class LastfmRequest: NSObject {
             }
         }
         
-        concatenatedString += self.secret.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        concatenatedString += self.credential.secret.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
         return String.md5(string: concatenatedString)
     }

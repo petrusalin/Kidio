@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2515696B1CE4B3F20050D59F /* LastfmMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696A1CE4B3F20050D59F /* LastfmMethod.swift */; };
 		2515696D1CE4C7470050D59F /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696C1CE4C7470050D59F /* String+MD5.swift */; };
+		251569701CE4D7E50050D59F /* LastfmSignedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696F1CE4D7E50050D59F /* LastfmSignedRequest.swift */; };
+		251569721CE4DA8F0050D59F /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251569711CE4DA8F0050D59F /* Dictionary+Utils.swift */; };
 		254C56D91CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */; };
 		254C79C51CDB8EC200C7F5BA /* String+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C79C41CDB8EC200C7F5BA /* String+Duration.swift */; };
 		2551BF401CE1BDDD00A71403 /* LastfmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		2515696A1CE4B3F20050D59F /* LastfmMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmMethod.swift; sourceTree = "<group>"; };
 		2515696C1CE4C7470050D59F /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		2515696F1CE4D7E50050D59F /* LastfmSignedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmSignedRequest.swift; sourceTree = "<group>"; };
+		251569711CE4DA8F0050D59F /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; };
 		254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioProtocol.swift; sourceTree = "<group>"; };
 		254C79C41CDB8EC200C7F5BA /* String+Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Duration.swift"; sourceTree = "<group>"; };
 		2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmManager.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2515696C1CE4C7470050D59F /* String+MD5.swift */,
+				251569711CE4DA8F0050D59F /* Dictionary+Utils.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			children = (
 				2515696A1CE4B3F20050D59F /* LastfmMethod.swift */,
 				2551BF431CE1BFD300A71403 /* LastfmRequest.swift */,
+				2515696F1CE4D7E50050D59F /* LastfmSignedRequest.swift */,
 				2551BF491CE1C40F00A71403 /* LastfmAuthRequest.swift */,
 				2551BF451CE1C3B000A71403 /* LastfmNowPlayingRequest.swift */,
 				2551BF471CE1C3CE00A71403 /* LastfmScrobbleRequest.swift */,
@@ -403,6 +409,7 @@
 				2596061A1CE0B25B00FAF1C3 /* ThemedButton.swift in Sources */,
 				255A2ADC1CE3273A003FF72A /* UIView+Loading.swift in Sources */,
 				257EF7291CD89DC600D0D489 /* AlbumsTableViewController.swift in Sources */,
+				251569721CE4DA8F0050D59F /* Dictionary+Utils.swift in Sources */,
 				257EF71F1CD8973A00D0D489 /* NSFileManager+Additions.swift in Sources */,
 				25DCE01B1CDA37260056DD8D /* CurrentlyPlayingViewController.swift in Sources */,
 				257EF7271CD89DB800D0D489 /* TracksTableViewController.swift in Sources */,
@@ -416,6 +423,7 @@
 				2596061F1CE0EC9D00FAF1C3 /* SongsTableViewController.swift in Sources */,
 				25DCE0171CDA0E6B0056DD8D /* MediaItemTableViewController.swift in Sources */,
 				257EF72B1CD89DD100D0D489 /* SettingsTableViewController.swift in Sources */,
+				251569701CE4D7E50050D59F /* LastfmSignedRequest.swift in Sources */,
 				259606161CE0905D00FAF1C3 /* ThemeManager.swift in Sources */,
 				257EF7311CD8C0C700D0D489 /* PlaySession.swift in Sources */,
 				257EF71C1CD8969D00D0D489 /* CoreDataManager.swift in Sources */,

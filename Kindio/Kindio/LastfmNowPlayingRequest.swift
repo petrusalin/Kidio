@@ -8,24 +8,22 @@
 
 import UIKit
 
-class LastfmNowPlayingRequest: LastfmRequest {
+class LastfmNowPlayingRequest: LastfmSignedRequest {
     private var trackName: String!
     private var artistName: String!
     private var albumName: String!
     
-    init(trackName: String, artistName: String) {
+    init(credential: LastfmCredential, sessionKey: String, trackName: String, artistName: String) {
         self.trackName = trackName
         self.artistName = artistName
         
-        super.init()
+        super.init(credential: credential, sessionKey: sessionKey)
         
-        if let token = LastfmManager.sharedInstance.lastfmToken() {
-            self.lastfmMethod = LastfmMethod.signedMethodWithType(LastfmMethodType.NowPlaying, apiKey: self.key, sessionKey: token)
-            
-            self.lastfmMethod!.parameters[LastfmKeys.Track.rawValue] = trackName
-            self.lastfmMethod!.parameters[LastfmKeys.Artist.rawValue] = artistName
-
-            self.prepareForExecute()
-        }
+        self.lastfmMethod = LastfmMethod.signedMethodWithType(LastfmMethodType.NowPlaying, apiKey: self.credential.appKey, sessionKey: sessionKey)
+        
+        self.lastfmMethod!.parameters[LastfmKeys.Track.rawValue] = trackName
+        self.lastfmMethod!.parameters[LastfmKeys.Artist.rawValue] = artistName
+        
+        self.prepareForExecute()
     }
 }

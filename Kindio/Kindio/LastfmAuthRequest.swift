@@ -17,13 +17,13 @@ class LastfmAuthRequest: LastfmRequest {
         return "https://ws.audioscrobbler.com/2.0/"
     }
     
-    init(username: String, password: String) {
+    init(credential: LastfmCredential,  username: String, password: String) {
         self.username = username
         self.password = password
         
-        super.init()
+        super.init(credential: credential)
         
-        self.lastfmMethod = LastfmMethod.authMethodWithKey(self.key)
+        self.lastfmMethod = LastfmMethod.authMethodWithKey(self.credential.appKey)
         self.lastfmMethod!.parameters[LastfmKeys.Password.rawValue] = password;
         self.lastfmMethod!.parameters[LastfmKeys.Username.rawValue] = username
         

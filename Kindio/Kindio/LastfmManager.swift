@@ -10,8 +10,10 @@ import UIKit
 
 private let sharedManager = LastfmManager()
 
+
 class LastfmManager: NSObject {
     private let tokenKey = "lastfmTokenKey"
+    private var lastFmCredential = LastfmCredential.init(key: "5fb7895d398515c93d6cc95056ca81ef", secret: "b318576b5b4c266977698d0b42f86adf")
     
     private override init() {
         super.init()
@@ -53,7 +55,7 @@ class LastfmManager: NSObject {
     }
     
     func loginWithUsername(username: String, password: String, completion: (error: NSError?) -> Void) {
-        let authRequest = LastfmAuthRequest.init(username: username, password: password)
+        let authRequest = LastfmAuthRequest.init(credential: self.lastFmCredential, username: username, password: password)
         
         authRequest.executeWithCompletionBlock { (response, error) in
             if let dict = response as? [String: AnyObject] {
@@ -75,7 +77,7 @@ class LastfmManager: NSObject {
             return
         }
         
-        let nowPlayingRequest = LastfmNowPlayingRequest.init(trackName: track, artistName: artist)
+        let nowPlayingRequest = LastfmNowPlayingRequest.init(credential: self.lastFmCredential, sessionKey: self.lastfmToken()!, trackName: track, artistName: artist)
         
         nowPlayingRequest.executeWithCompletionBlock { (response, error) in
             completion(error: error)
@@ -87,7 +89,7 @@ class LastfmManager: NSObject {
             return
         }
         
-        let scrobbleRequest = LastfmScrobbleRequest.init(trackName: track, artistName: artist, timestamp: timestamp)
+        let scrobbleRequest = LastfmScrobbleRequest.init(credential: self.lastFmCredential, sessionKey: self.lastfmToken()!, trackName: track, artistName: artist, timestamp: timestamp)
         
         scrobbleRequest.executeWithCompletionBlock { (response, error) in
             completion(error: error)
