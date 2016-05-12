@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2515696B1CE4B3F20050D59F /* LastfmMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696A1CE4B3F20050D59F /* LastfmMethod.swift */; };
+		2515696D1CE4C7470050D59F /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696C1CE4C7470050D59F /* String+MD5.swift */; };
 		254C56D91CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */; };
 		254C79C51CDB8EC200C7F5BA /* String+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C79C41CDB8EC200C7F5BA /* String+Duration.swift */; };
 		2551BF401CE1BDDD00A71403 /* LastfmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2515696A1CE4B3F20050D59F /* LastfmMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmMethod.swift; sourceTree = "<group>"; };
+		2515696C1CE4C7470050D59F /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioProtocol.swift; sourceTree = "<group>"; };
 		254C79C41CDB8EC200C7F5BA /* String+Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Duration.swift"; sourceTree = "<group>"; };
 		2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmManager.swift; sourceTree = "<group>"; };
@@ -101,9 +105,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2515696E1CE4C74E0050D59F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2515696C1CE4C7470050D59F /* String+MD5.swift */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		2551BF3E1CE1BDC300A71403 /* Last.fm */ = {
 			isa = PBXGroup;
 			children = (
+				2515696E1CE4C74E0050D59F /* Categories */,
 				2551BF4D1CE1DDB800A71403 /* UI */,
 				2551BF421CE1BFC400A71403 /* Requests */,
 				2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */,
@@ -114,6 +127,7 @@
 		2551BF421CE1BFC400A71403 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				2515696A1CE4B3F20050D59F /* LastfmMethod.swift */,
 				2551BF431CE1BFD300A71403 /* LastfmRequest.swift */,
 				2551BF491CE1C40F00A71403 /* LastfmAuthRequest.swift */,
 				2551BF451CE1C3B000A71403 /* LastfmNowPlayingRequest.swift */,
@@ -410,8 +424,10 @@
 				2551BF441CE1BFD300A71403 /* LastfmRequest.swift in Sources */,
 				2551BF401CE1BDDD00A71403 /* LastfmManager.swift in Sources */,
 				2596061C1CE0B9A400FAF1C3 /* ThemedSlider.swift in Sources */,
+				2515696B1CE4B3F20050D59F /* LastfmMethod.swift in Sources */,
 				254C56D91CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift in Sources */,
 				257EF72D1CD89F8900D0D489 /* KDTabBarController.swift in Sources */,
+				2515696D1CE4C7470050D59F /* String+MD5.swift in Sources */,
 				257EF7251CD89DA000D0D489 /* ArtistsTableViewController.swift in Sources */,
 				259606181CE0916800FAF1C3 /* UIColor+Themes.swift in Sources */,
 			);

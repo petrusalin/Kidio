@@ -8,49 +8,54 @@
 
 import UIKit
 
-class LastfmRequest: NSObject {
+internal class LastfmRequest: NSObject {
     internal var key  = "5fb7895d398515c93d6cc95056ca81ef"
     internal var secret = "b318576b5b4c266977698d0b42f86adf"
+    internal var lastfmMethod: LastfmMethod?
     internal var baseURL : String  {
-        return "https://ws.audioscrobbler.com/2.0/"
+        return "http://ws.audioscrobbler.com/2.0/"
     }
     
     func executeWithCompletionBlock(completion: (response: AnyObject?, error: NSError?) -> Void) {
-        completion(response:nil, error: nil)
+        let manager = AFHTTPSessionManager()
+        
+        manager.POST(self.baseURL,
+                     parameters: self.lastfmMethod!.parameters,
+                     progress: { (progress) in },
+                     success: { (dataTask, dictionary) in
+                        completion(response: dictionary, error: nil)
+        }) { (dataTask, error) in
+            completion(response: nil, error: error)
+        }
+    }
+
+    internal func prepareForExecute() {
+        if self.lastfmMethod != nil {
+            self.lastfmMethod!.parameters[LastfmKeys.Signature.rawValue] = self.signature(self.lastfmMethod!.parameters)
+            self.lastfmMethod!.parameters[LastfmKeys.Format.rawValue] = "json"
+        }
     }
     
-    
-    func sig(dictionary: [String : String]) -> String {
+    internal func signature(dictionary: [String : AnyObject]) -> String {
         let parameters = dictionary.keys
         let sortedParameters = parameters.sort () {$0 < $1}
         var concatenatedString = ""
         
         for key in sortedParameters {
-            concatenatedString += key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-            if (key == "artist" || key == "track") {
-                concatenatedString += dictionary[key]!
-            } else {
-                concatenatedString += dictionary[key]!.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            if let value = dictionary[key] as? String {
+                concatenatedString += key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                
+                if (LastfmKeys.keyRequiresUrlEncoding(key)) {
+                    concatenatedString += value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+                } else {
+                    concatenatedString += value
+                }
             }
         }
         
         concatenatedString += self.secret.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
-        return md5(string: concatenatedString)
-    }
-    
-    func md5(string string: String) -> String! {
-        var digest = [UInt8](count: Int(CC_MD5_DIGEST_LENGTH), repeatedValue: 0)
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            CC_MD5(data.bytes, CC_LONG(data.length), &digest)
-        }
-        
-        var digestHex = ""
-        for index in 0..<Int(CC_MD5_DIGEST_LENGTH) {
-            digestHex += String(format: "%02x", digest[index])
-        }
-        
-        return digestHex
+        return String.md5(string: concatenatedString)
     }
 }
 

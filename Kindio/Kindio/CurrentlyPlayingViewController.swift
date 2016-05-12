@@ -23,12 +23,24 @@ class CurrentlyPlayingViewController: UIViewController {
     @IBOutlet var bottomControlsView: UIView!
     @IBOutlet var topControlsView: UIView!
     
-    var playSession : PlaySession!
-    var mediaItem : MPMediaItem!
+    var playSession : PlaySession! {
+        didSet {
+            self.playSession.mediaPlayer.beginGeneratingPlaybackNotifications()
+        }
+    }
+    var mediaItem : MPMediaItem! {
+        didSet {
+            self.mediaItemScrobbled = false
+            self.mediaItemStartTimestamp = Int(NSDate.init().timeIntervalSince1970)
+        }
+    }
+    
     var collection : MPMediaItemCollection!
     private var volumeView : MPVolumeView!
     private var playbackTimer : CADisplayLink!
     private var startPlaying = false
+    private var mediaItemScrobbled = false
+    private var mediaItemStartTimestamp = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +49,6 @@ class CurrentlyPlayingViewController: UIViewController {
         self.topControlsView.backgroundColor = UIColor.blackColor()
         self.view.backgroundColor = UIColor.blueCharcoal()
         
-        self.playSession.mediaPlayer.beginGeneratingPlaybackNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(CurrentlyPlayingViewController.onTrackChanged),  name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
         
         self.volumeView = MPVolumeView.init(frame: CGRectMake(0, 0, self.volumeContainerView.frame.size.width, self.volumeContainerView.frame.size.height))
@@ -123,6 +134,16 @@ class CurrentlyPlayingViewController: UIViewController {
         let currentTime = Float(self.playSession.mediaPlayer.currentPlaybackTime)
         self.timeSlider.value = currentTime
         self.updateTimeLabelsWithCurrentTime(Double(currentTime))
+        
+        if (LastfmManager.sharedInstance.isLoggedIn() && Double(currentTime) >= self.mediaItem.playbackDuration / 2 && self.mediaItemScrobbled == false) {
+            self.mediaItemScrobbled = true
+            
+            LastfmManager.sharedInstance.scrobble(self.mediaItem.title!, artist: self.mediaItem.artist!, timestamp: self.mediaItemStartTimestamp, completion: { (error) in
+                if (error != nil) {
+                    self.mediaItemScrobbled = false
+                }
+            })
+        }
     }
     
     @IBAction func onTimeChanged(sender: UISlider) {

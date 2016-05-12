@@ -15,6 +15,17 @@ class LastfmManager: NSObject {
     
     private override init() {
         super.init()
+        
+        let manager = AFHTTPSessionManager()
+        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer.HTTPMethodsEncodingParametersInURI.insert("POST")
+        manager.requestSerializer.stringEncoding = NSUTF8StringEncoding
+        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        manager.responseSerializer = AFJSONResponseSerializer()
+        manager.responseSerializer.acceptableContentTypes = ["application/json"]
+        
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
     }
     
     class var sharedInstance: LastfmManager {
@@ -67,6 +78,18 @@ class LastfmManager: NSObject {
         let nowPlayingRequest = LastfmNowPlayingRequest.init(trackName: track, artistName: artist)
         
         nowPlayingRequest.executeWithCompletionBlock { (response, error) in
+            completion(error: error)
+        }
+    }
+    
+    func scrobble(track: String, artist: String, timestamp: Int, completion: (error: NSError?) -> Void) {
+        if sharedManager.isLoggedIn() == false {
+            return
+        }
+        
+        let scrobbleRequest = LastfmScrobbleRequest.init(trackName: track, artistName: artist, timestamp: timestamp)
+        
+        scrobbleRequest.executeWithCompletionBlock { (response, error) in
             completion(error: error)
         }
     }
