@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rdc-8i-6bq">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ptq-P5-Qfj">
+            <objects>
+                <tabBarController id="Rdc-8i-6bq" customClass="KDTabBarController" customModule="Kindio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="2dg-ON-3A8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Q6q-fn-NzK" kind="relationship" relationship="viewControllers" id="NWe-Ch-p7C"/>
+                        <segue destination="alY-hK-mZX" kind="relationship" relationship="viewControllers" id="aje-Cs-er3"/>
+                        <segue destination="Bwx-0G-kcx" kind="relationship" relationship="viewControllers" id="n3O-zQ-e7m"/>
+                        <segue destination="p34-0X-KOc" kind="relationship" relationship="viewControllers" id="S4F-Pg-QVX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYc-L7-oMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="161" y="272"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="iDs-R3-f0m">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingsTableViewController" title="Settings" id="eHR-ax-yKM" customClass="SettingsTableViewController" customModule="Kindio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bcQ-2Y-ehV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="eHR-ax-yKM" id="IXa-g8-Ejf"/>
+                            <outlet property="delegate" destination="eHR-ax-yKM" id="b78-vq-iA7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="Gcv-YK-dPS"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9R-sC-GhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="-381"/>
+        </scene>
+        <!--Albums-->
+        <scene sceneID="anC-by-N6J">
+            <objects>
+                <tableViewController storyboardIdentifier="AlbumsTableViewController" id="EBD-3e-l9c" customClass="AlbumsTableViewController" customModule="Kindio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1dM-D1-Keu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="EBD-3e-l9c" id="DRD-uL-Xp8"/>
+                            <outlet property="delegate" destination="EBD-3e-l9c" id="t7J-zS-eh5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Albums" id="sD0-ag-4Bo"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mI2-8T-SSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1706" y="272"/>
+        </scene>
+        <!--Artists-->
+        <scene sceneID="ONF-R4-ZbX">
+            <objects>
+                <tableViewController storyboardIdentifier="ArtistsTableViewController" id="VFz-5S-Piu" customClass="ArtistsTableViewController" customModule="Kindio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="17H-uf-pSx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="VFz-5S-Piu" id="5ja-Lx-YVa"/>
+                            <outlet property="delegate" destination="VFz-5S-Piu" id="X3f-Px-7qH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Artists" id="Jsc-eL-to0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJc-Ft-QO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2254" y="1048"/>
+        </scene>
+        <!--Tracks-->
+        <scene sceneID="dat-gs-RIJ">
+            <objects>
+                <tableViewController storyboardIdentifier="TracksTableViewController" id="k9S-8r-hiB" customClass="TracksTableViewController" customModule="Kindio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="niz-co-o83">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="k9S-8r-hiB" id="NyV-4Z-tek"/>
+                            <outlet property="delegate" destination="k9S-8r-hiB" id="dB2-aL-Fo7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tracks" id="SEC-SV-6IL"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fPO-f1-EYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="1048"/>
+        </scene>
+        <!--Tracks-->
+        <scene sceneID="S2m-BZ-B7J">
+            <objects>
+                <navigationController title="Tracks" automaticallyAdjustsScrollViewInsets="NO" id="Q6q-fn-NzK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tracks" image="sinWave" id="UNM-YR-Bkq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tla-cR-RDf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k9S-8r-hiB" kind="relationship" relationship="rootViewController" id="KAo-6Z-Lbt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fmh-A1-qTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4" y="1048"/>
+        </scene>
+        <!--Artists-->
+        <scene sceneID="peK-8M-gCU">
+            <objects>
+                <navigationController title="Artists" automaticallyAdjustsScrollViewInsets="NO" id="alY-hK-mZX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Artists" image="musicConductor" id="130-B7-BOx"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cOj-gE-Dln">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VFz-5S-Piu" kind="relationship" relationship="rootViewController" id="JKV-7E-D32"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3CB-cO-1C1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1537" y="1048"/>
+        </scene>
+        <!--Albums-->
+        <scene sceneID="pvi-xt-xL2">
+            <objects>
+                <navigationController title="Albums" automaticallyAdjustsScrollViewInsets="NO" id="Bwx-0G-kcx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Albums" image="musicRecord" id="r6s-Bs-9La"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TYj-FD-ZQN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EBD-3e-l9c" kind="relationship" relationship="rootViewController" id="UFx-7e-zgt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="np3-Z2-Ree" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998" y="272"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="hij-Iu-PBt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p34-0X-KOc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="djSet" id="Q6d-dG-ko3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QYj-KH-JpI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eHR-ax-yKM" kind="relationship" relationship="rootViewController" id="HA6-Bz-RS8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T37-zL-CnZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998" y="-381"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="djSet" width="25" height="25"/>
+        <image name="musicConductor" width="25" height="25"/>
+        <image name="musicRecord" width="25" height="25"/>
+        <image name="sinWave" width="25" height="25"/>
+    </resources>
+</document>
