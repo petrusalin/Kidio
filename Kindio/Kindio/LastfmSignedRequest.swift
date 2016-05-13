@@ -16,10 +16,10 @@ class LastfmSignedRequest: LastfmRequest {
         self.sessionToken = sessionKey
     }
 
-    class func signedRequestWithMethodType(methodType: LastfmMethodType, parameters: [String : AnyObject], sessionToken: String) -> LastfmSignedRequest {
-        let request = self.signedRequestWithMethodType(methodType, parameters: parameters, sessionToken: sessionToken)
+    class func signedRequestWithMethodType(methodType: LastfmMethodType, parameters: [String : AnyObject], sessionToken: String, credentials: LastfmCredential) -> LastfmSignedRequest {
+        let request = LastfmSignedRequest.init(credential: credentials, sessionKey: sessionToken)
         
-        request.lastfmMethod = LastfmMethod.signedMethodWithType(LastfmMethodType.NowPlaying, apiKey: request.credential.appKey, sessionKey: sessionToken)
+        request.lastfmMethod = LastfmMethod.signedMethodWithType(methodType, apiKey: request.credential.appKey, sessionKey: sessionToken)
         request.lastfmMethod!.parameters.update(parameters)
         request.prepareForExecute()
         
