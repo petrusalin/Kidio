@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         themeManager.window = self.window
         themeManager.applyTheme()
         
+        let credential = LastfmCredential.init(key: "5fb7895d398515c93d6cc95056ca81ef", secret: "b318576b5b4c266977698d0b42f86adf")
+        LastfmManager.sharedInstance.configureWithCredential(credential)
+        
         return true
     }
 

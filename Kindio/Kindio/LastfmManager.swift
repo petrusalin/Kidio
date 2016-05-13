@@ -14,7 +14,7 @@ private let sharedManager = LastfmManager()
 class LastfmManager: NSObject {
     private let keychain = KeychainWrapper()
     private let usernameKey = "lastfmUsernameKey"
-    private var lastFmCredential = LastfmCredential.init(key: "5fb7895d398515c93d6cc95056ca81ef", secret: "b318576b5b4c266977698d0b42f86adf")
+    private var lastFmCredential : LastfmCredential!
     
     private override init() {
         super.init()
@@ -33,6 +33,10 @@ class LastfmManager: NSObject {
     
     class var sharedInstance: LastfmManager {
         return sharedManager
+    }
+    
+    func configureWithCredential(lastFmCredential : LastfmCredential) {
+        self.lastFmCredential = lastFmCredential
     }
     
     internal func saveLastfmToken(token: String) {
@@ -71,6 +75,10 @@ class LastfmManager: NSObject {
     // Mark : requests
     
     func loginWithUsername(username: String, password: String, completion: (error: NSError?) -> Void) {
+        if (self.lastFmCredential == nil) {
+            return
+        }
+        
         let authRequest = LastfmAuthRequest.init(credential: self.lastFmCredential, username: username, password: password)
         
         authRequest.executeWithCompletionBlock { (response, error) in
@@ -90,7 +98,7 @@ class LastfmManager: NSObject {
     }
     
     func updateNowPlaying(track: String, artist: String, completion: (error: NSError?) -> Void) {
-        if sharedManager.isLoggedIn() == false {
+        if sharedManager.isLoggedIn() == false || self.lastFmCredential == nil {
             return
         }
         
@@ -102,7 +110,7 @@ class LastfmManager: NSObject {
     }
     
     func scrobble(track: String, artist: String, timestamp: Int, completion: (error: NSError?) -> Void) {
-        if sharedManager.isLoggedIn() == false {
+        if sharedManager.isLoggedIn() == false || self.lastFmCredential == nil {
             return
         }
         
@@ -116,6 +124,13 @@ class LastfmManager: NSObject {
     func executeRequestWithMethod(method: LastfmMethodType, parameters: [String : AnyObject], completion: (response: AnyObject?, error: NSError?) -> Void) {
         if method == .Authentication {
             assert(false, "Use the dedicated method for auth")
+        }
+        
+        if self.lastFmCredential == nil {
+            completion(response: nil, error: nil)
+            
+            
+            return
         }
         
         if (method.requiresSigning()) {
