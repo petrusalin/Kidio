@@ -8,6 +8,7 @@
 
 import UIKit
 import MediaPlayer
+import APLfm
 
 class CurrentlyPlayingViewController: UIViewController {
     
@@ -90,6 +91,7 @@ class CurrentlyPlayingViewController: UIViewController {
         
         self.updateUIForNewTrack()
     }
+    
     
     private func updateUIForNewTrack() {
         if let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) {

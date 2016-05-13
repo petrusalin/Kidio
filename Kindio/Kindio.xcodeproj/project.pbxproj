@@ -7,22 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2515696B1CE4B3F20050D59F /* LastfmMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696A1CE4B3F20050D59F /* LastfmMethod.swift */; };
-		2515696D1CE4C7470050D59F /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696C1CE4C7470050D59F /* String+MD5.swift */; };
-		251569701CE4D7E50050D59F /* LastfmSignedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2515696F1CE4D7E50050D59F /* LastfmSignedRequest.swift */; };
-		251569721CE4DA8F0050D59F /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251569711CE4DA8F0050D59F /* Dictionary+Utils.swift */; };
-		251569751CE4E0230050D59F /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 251569741CE4E0230050D59F /* KeychainWrapper.m */; };
+		251DBBE51CE61FE400620F30 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7DE3C7EBDDADDB1280CFBF /* Pods.framework */; };
 		254C56D91CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */; };
 		254C79C51CDB8EC200C7F5BA /* String+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C79C41CDB8EC200C7F5BA /* String+Duration.swift */; };
-		2551BF401CE1BDDD00A71403 /* LastfmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */; };
-		2551BF441CE1BFD300A71403 /* LastfmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF431CE1BFD300A71403 /* LastfmRequest.swift */; };
-		2551BF461CE1C3B000A71403 /* LastfmNowPlayingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF451CE1C3B000A71403 /* LastfmNowPlayingRequest.swift */; };
-		2551BF481CE1C3CE00A71403 /* LastfmScrobbleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF471CE1C3CE00A71403 /* LastfmScrobbleRequest.swift */; };
-		2551BF4A1CE1C40F00A71403 /* LastfmAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF491CE1C40F00A71403 /* LastfmAuthRequest.swift */; };
 		2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */; };
 		2551BF531CE1DE2100A71403 /* LastfmLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */; };
 		255A2ADC1CE3273A003FF72A /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A2ADB1CE3273A003FF72A /* UIView+Loading.swift */; };
-		257C98411CE5B1CC00C85D0C /* LastfmUnsignedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257C98401CE5B1CC00C85D0C /* LastfmUnsignedRequest.swift */; };
 		257EF7061CD8966D00D0D489 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257EF7051CD8966D00D0D489 /* AppDelegate.swift */; };
 		257EF70B1CD8966D00D0D489 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257EF7091CD8966D00D0D489 /* Main.storyboard */; };
 		257EF70E1CD8966D00D0D489 /* Kindio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 257EF70C1CD8966D00D0D489 /* Kindio.xcdatamodeld */; };
@@ -48,28 +38,16 @@
 		25DCE0171CDA0E6B0056DD8D /* MediaItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCE0161CDA0E6B0056DD8D /* MediaItemTableViewController.swift */; };
 		25DCE01B1CDA37260056DD8D /* CurrentlyPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCE0191CDA37260056DD8D /* CurrentlyPlayingViewController.swift */; };
 		25DCE01C1CDA37260056DD8D /* CurrentlyPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25DCE01A1CDA37260056DD8D /* CurrentlyPlayingViewController.xib */; };
-		BCB51E761FF7DDEA01AAD15A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34DD6FCE22D3C2C8A7FC5EFE /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2515696A1CE4B3F20050D59F /* LastfmMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmMethod.swift; sourceTree = "<group>"; };
-		2515696C1CE4C7470050D59F /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
-		2515696F1CE4D7E50050D59F /* LastfmSignedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmSignedRequest.swift; sourceTree = "<group>"; };
-		251569711CE4DA8F0050D59F /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; };
-		251569731CE4E0230050D59F /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
-		251569741CE4E0230050D59F /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		251DBBE31CE61FD900620F30 /* APLfm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APLfm.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Kindio-hapivpvawiizhrapfttvyfrydsew/Build/Products/Debug-iphoneos/APLfm.framework"; sourceTree = "<group>"; };
 		254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioProtocol.swift; sourceTree = "<group>"; };
 		254C79C41CDB8EC200C7F5BA /* String+Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Duration.swift"; sourceTree = "<group>"; };
-		2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmManager.swift; sourceTree = "<group>"; };
-		2551BF431CE1BFD300A71403 /* LastfmRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmRequest.swift; sourceTree = "<group>"; };
-		2551BF451CE1C3B000A71403 /* LastfmNowPlayingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmNowPlayingRequest.swift; sourceTree = "<group>"; };
-		2551BF471CE1C3CE00A71403 /* LastfmScrobbleRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmScrobbleRequest.swift; sourceTree = "<group>"; };
-		2551BF491CE1C40F00A71403 /* LastfmAuthRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmAuthRequest.swift; sourceTree = "<group>"; };
 		2551BF4B1CE1D3EB00A71403 /* Kindio-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Kindio-Bridging-Header.h"; sourceTree = "<group>"; };
 		2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmLoginViewController.swift; sourceTree = "<group>"; };
 		2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastfmLoginViewController.xib; sourceTree = "<group>"; };
 		255A2ADB1CE3273A003FF72A /* UIView+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
-		257C98401CE5B1CC00C85D0C /* LastfmUnsignedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmUnsignedRequest.swift; sourceTree = "<group>"; };
 		257EF7021CD8966D00D0D489 /* Kindio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kindio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		257EF7051CD8966D00D0D489 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		257EF70A1CD8966D00D0D489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,9 +75,9 @@
 		25DCE0161CDA0E6B0056DD8D /* MediaItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemTableViewController.swift; sourceTree = "<group>"; };
 		25DCE0191CDA37260056DD8D /* CurrentlyPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentlyPlayingViewController.swift; sourceTree = "<group>"; };
 		25DCE01A1CDA37260056DD8D /* CurrentlyPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentlyPlayingViewController.xib; sourceTree = "<group>"; };
-		34DD6FCE22D3C2C8A7FC5EFE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F35D766A4FAB5F70A9B2EE9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		93916DC35D4B8B233854E072 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BA7DE3C7EBDDADDB1280CFBF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,56 +85,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB51E761FF7DDEA01AAD15A /* libPods.a in Frameworks */,
+				251DBBE51CE61FE400620F30 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2515696E1CE4C74E0050D59F /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				2515696C1CE4C7470050D59F /* String+MD5.swift */,
-				251569711CE4DA8F0050D59F /* Dictionary+Utils.swift */,
-			);
-			name = Categories;
-			sourceTree = "<group>";
-		};
-		2551BF3E1CE1BDC300A71403 /* Last.fm */ = {
-			isa = PBXGroup;
-			children = (
-				2515696E1CE4C74E0050D59F /* Categories */,
-				2551BF4D1CE1DDB800A71403 /* UI */,
-				2551BF421CE1BFC400A71403 /* Requests */,
-				2551BF3F1CE1BDDD00A71403 /* LastfmManager.swift */,
-			);
-			name = Last.fm;
-			sourceTree = "<group>";
-		};
-		2551BF421CE1BFC400A71403 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				2515696A1CE4B3F20050D59F /* LastfmMethod.swift */,
-				2551BF431CE1BFD300A71403 /* LastfmRequest.swift */,
-				257C98401CE5B1CC00C85D0C /* LastfmUnsignedRequest.swift */,
-				2515696F1CE4D7E50050D59F /* LastfmSignedRequest.swift */,
-				2551BF491CE1C40F00A71403 /* LastfmAuthRequest.swift */,
-				2551BF451CE1C3B000A71403 /* LastfmNowPlayingRequest.swift */,
-				2551BF471CE1C3CE00A71403 /* LastfmScrobbleRequest.swift */,
-			);
-			name = Requests;
-			sourceTree = "<group>";
-		};
-		2551BF4D1CE1DDB800A71403 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */,
-				2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
 		257EF6F91CD8966D00D0D489 = {
 			isa = PBXGroup;
 			children = (
@@ -180,9 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				2551BF4B1CE1D3EB00A71403 /* Kindio-Bridging-Header.h */,
-				251569731CE4E0230050D59F /* KeychainWrapper.h */,
-				251569741CE4E0230050D59F /* KeychainWrapper.m */,
-				2551BF3E1CE1BDC300A71403 /* Last.fm */,
 				259606141CE08FDE00FAF1C3 /* Theming */,
 				25DCE0181CDA2FA30056DD8D /* ViewControllers */,
 				257EF7211CD89D4C00D0D489 /* TabBarViewControllers */,
@@ -263,6 +195,8 @@
 		25DCE0181CDA2FA30056DD8D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */,
+				2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */,
 				25DCE0191CDA37260056DD8D /* CurrentlyPlayingViewController.swift */,
 				25DCE01A1CDA37260056DD8D /* CurrentlyPlayingViewController.xib */,
 				2596061D1CE0EC9D00FAF1C3 /* SongsTableViewController.swift */,
@@ -274,7 +208,8 @@
 		6247548F16B1CAC8291BBD4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				34DD6FCE22D3C2C8A7FC5EFE /* libPods.a */,
+				251DBBE31CE61FD900620F30 /* APLfm.framework */,
+				BA7DE3C7EBDDADDB1280CFBF /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -417,35 +352,24 @@
 				2596061A1CE0B25B00FAF1C3 /* ThemedButton.swift in Sources */,
 				255A2ADC1CE3273A003FF72A /* UIView+Loading.swift in Sources */,
 				257EF7291CD89DC600D0D489 /* AlbumsTableViewController.swift in Sources */,
-				251569721CE4DA8F0050D59F /* Dictionary+Utils.swift in Sources */,
 				257EF71F1CD8973A00D0D489 /* NSFileManager+Additions.swift in Sources */,
 				25DCE01B1CDA37260056DD8D /* CurrentlyPlayingViewController.swift in Sources */,
 				257EF7271CD89DB800D0D489 /* TracksTableViewController.swift in Sources */,
 				257EF72F1CD8A04900D0D489 /* MusicCollectionsManager.swift in Sources */,
 				254C79C51CDB8EC200C7F5BA /* String+Duration.swift in Sources */,
 				257EF70E1CD8966D00D0D489 /* Kindio.xcdatamodeld in Sources */,
-				2551BF481CE1C3CE00A71403 /* LastfmScrobbleRequest.swift in Sources */,
-				2551BF461CE1C3B000A71403 /* LastfmNowPlayingRequest.swift in Sources */,
 				257EF7361CD8C5A700D0D489 /* AudioAssetCell.swift in Sources */,
 				2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */,
 				2596061F1CE0EC9D00FAF1C3 /* SongsTableViewController.swift in Sources */,
 				25DCE0171CDA0E6B0056DD8D /* MediaItemTableViewController.swift in Sources */,
 				257EF72B1CD89DD100D0D489 /* SettingsTableViewController.swift in Sources */,
-				257C98411CE5B1CC00C85D0C /* LastfmUnsignedRequest.swift in Sources */,
-				251569701CE4D7E50050D59F /* LastfmSignedRequest.swift in Sources */,
-				251569751CE4E0230050D59F /* KeychainWrapper.m in Sources */,
 				259606161CE0905D00FAF1C3 /* ThemeManager.swift in Sources */,
 				257EF7311CD8C0C700D0D489 /* PlaySession.swift in Sources */,
 				257EF71C1CD8969D00D0D489 /* CoreDataManager.swift in Sources */,
 				257EF7061CD8966D00D0D489 /* AppDelegate.swift in Sources */,
-				2551BF4A1CE1C40F00A71403 /* LastfmAuthRequest.swift in Sources */,
-				2551BF441CE1BFD300A71403 /* LastfmRequest.swift in Sources */,
-				2551BF401CE1BDDD00A71403 /* LastfmManager.swift in Sources */,
 				2596061C1CE0B9A400FAF1C3 /* ThemedSlider.swift in Sources */,
-				2515696B1CE4B3F20050D59F /* LastfmMethod.swift in Sources */,
 				254C56D91CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift in Sources */,
 				257EF72D1CD89F8900D0D489 /* KDTabBarController.swift in Sources */,
-				2515696D1CE4C7470050D59F /* String+MD5.swift in Sources */,
 				257EF7251CD89DA000D0D489 /* ArtistsTableViewController.swift in Sources */,
 				259606181CE0916800FAF1C3 /* UIColor+Themes.swift in Sources */,
 			);
@@ -557,9 +481,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Kindio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = softvision.Kindio;
+				PRODUCT_BUNDLE_IDENTIFIER = alin.petrus.Kindio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./Kindio/Kindio-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -573,9 +498,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Kindio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = softvision.Kindio;
+				PRODUCT_BUNDLE_IDENTIFIER = alin.petrus.Kindio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./Kindio/Kindio-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -1,0 +1,6 @@
+framework module APLfm {
+  umbrella header "APLfm-umbrella.h"
+
+  export *
+  module * { export * }
+}

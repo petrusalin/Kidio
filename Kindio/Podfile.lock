@@ -14,11 +14,34 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - APLfm (0.1.2):
+    - AFNetworking (~> 3.0)
+    - CryptoSwift
+  - CryptoSwift (0.4.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - APLfm (from `https://github.com/petrusalin/APLfm.git`)
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
+
+EXTERNAL SOURCES:
+  APLfm:
+    :git: https://github.com/petrusalin/APLfm.git
+  CryptoSwift:
+    :branch: master
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+
+CHECKOUT OPTIONS:
+  APLfm:
+    :commit: 0b431a41c08c341e2454f2f169fb9b8215eb6bcc
+    :git: https://github.com/petrusalin/APLfm.git
+  CryptoSwift:
+    :commit: 2541799df3f40693aa3f635e73fc48889866fa12
+    :git: https://github.com/krzyzanowskim/CryptoSwift
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  APLfm: e83a538b69fbdc0c1e38b38ea95bfef04f0a0a75
+  CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
 
 COCOAPODS: 0.39.0
