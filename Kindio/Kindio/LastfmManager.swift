@@ -68,6 +68,8 @@ class LastfmManager: NSObject {
         NSUserDefaults.standardUserDefaults().removeObjectForKey(self.usernameKey)
     }
     
+    // Mark : requests
+    
     func loginWithUsername(username: String, password: String, completion: (error: NSError?) -> Void) {
         let authRequest = LastfmAuthRequest.init(credential: self.lastFmCredential, username: username, password: password)
         
@@ -110,4 +112,30 @@ class LastfmManager: NSObject {
             completion(error: error)
         }
     }
+    
+    func executeRequestWithMethod(method: LastfmMethodType, parameters: [String : AnyObject], completion: (response: AnyObject?, error: NSError?) -> Void) {
+        if method == .Authentication {
+            assert(false, "Use the dedicated method for auth")
+        }
+        
+        if (method.requiresSigning()) {
+            if sharedManager.isLoggedIn() == false {
+                completion(response: nil, error: nil)
+                return
+            }
+            
+            let request = LastfmSignedRequest.signedRequestWithMethodType(method, parameters: parameters, sessionToken: self.lastfmToken()!, credentials: self.lastFmCredential)
+            
+            request.executeWithCompletionBlock({ (response, error) in
+                completion(response: response, error: error)
+            })
+        } else {
+            let request = LastfmUnsignedRequest.unsignedRequestWithMethodType(method, parameters: parameters, credentials: self.lastFmCredential)
+            
+            request.executeWithCompletionBlock({ (response, error) in
+                completion(response: response, error: error)
+            })
+        }
+    }
+    
 }

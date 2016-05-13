@@ -9,7 +9,7 @@
 import UIKit
 
 class LastfmUnsignedRequest: LastfmRequest {
-    class func signedRequestWithMethodType(methodType: LastfmMethodType, parameters: [String : AnyObject], sessionToken: String, credentials: LastfmCredential) -> LastfmUnsignedRequest {
+    class func unsignedRequestWithMethodType(methodType: LastfmMethodType, parameters: [String : AnyObject], credentials: LastfmCredential) -> LastfmUnsignedRequest {
         let request = LastfmUnsignedRequest.init(credential: credentials)
         
         request.lastfmMethod = LastfmMethod.unsignedMethodWithType(methodType, apiKey: request.credential.appKey)

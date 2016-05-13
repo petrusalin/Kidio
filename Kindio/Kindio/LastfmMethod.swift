@@ -14,10 +14,10 @@ enum LastfmMethodType: String {
     case NowPlaying               = "track.updateNowPlaying"
     case Scrobble                 = "track.scrobble"
 
-    case AddAlbumTags             = "album.addTags"
-    case GetAlbumInfo             = "album.getInfo"
-    case GetAlbumTags             = "album.getTags"
-    case GetAlbumTopTags          = "album.getTopTags"
+    case AlbumAddTags             = "album.addTags"
+    case AlbumGetInfo             = "album.getInfo"
+    case AlbumGetTags             = "album.getTags"
+    case AlbumGetTopTags          = "album.getTopTags"
     case AlbumRemoveTag           = "album.removeTag"
     case AlbumSearch              = "album.search"
 
@@ -74,6 +74,15 @@ enum LastfmMethodType: String {
     case UserGetWeeklyArtistChart = "user.getWeeklyArtistChart"
     case UserGetWeeklyChartList   = "user.getWeeklyChartList"
     case UserGetWeeklyTrackChart  = "user.getWeeklyTrackChart"
+    
+    func requiresSigning() -> Bool {
+        switch self {
+        case .Authentication, .NowPlaying, .Scrobble, .AlbumAddTags, .AlbumRemoveTag, .ArtistAddTags, .ArtistRemoveTag, .TrackAddTags, .TrackRemoveTag, .TrackLove, .TrackUnlove:
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 enum LastfmKeys: String {
@@ -162,4 +171,5 @@ struct LastfmMethod {
         
         return method
     }
+    
 }
