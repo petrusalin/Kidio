@@ -17,6 +17,7 @@ class KDTabBarController: UITabBarController {
         super.viewDidLoad()
         
         self.audioPlayerViewController = CurrentlyPlayingViewController()
+        self.audioPlayerViewController.playSession = playSession
         self.onTracksSelected()
     }
     

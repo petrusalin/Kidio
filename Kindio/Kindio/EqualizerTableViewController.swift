@@ -52,6 +52,14 @@ class EqualizerTableViewController: UITableViewController {
         cell.contentView.backgroundColor = UIColor.blueCharcoal()
         cell.backgroundColor = UIColor.blueCharcoal()
         cell.textLabel?.textColor = UIColor.whiteColor()
+        
+        if let session = self.playSession {
+            if (indexPath.row == session.eqPreset) {
+               cell.accessoryView = UIImageView.init(image: UIImage.init(imageLiteral: "rockinIt"))
+            } else {
+                cell.accessoryView = nil
+            }
+        }
 
         return cell
     }
@@ -60,7 +68,8 @@ class EqualizerTableViewController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if let session = self.playSession {
-            session.mediaPlayer.selectEQPreset(indexPath.row)
+            session.selectEQPreset(indexPath.row)
+            self.tableView.reloadData()
         }
     }
     

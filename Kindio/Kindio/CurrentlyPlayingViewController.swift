@@ -11,7 +11,7 @@ import MediaPlayer
 import APLfm
 import EZAudio
 
-class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
+class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, EZOutputDelegate {
     
     @IBOutlet var currentTimeLabel: UILabel!
     @IBOutlet var remainingTimeLabel: UILabel!
@@ -24,6 +24,7 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
     @IBOutlet var volumeContainerView: UIView!
     @IBOutlet var bottomControlsView: UIView!
     @IBOutlet var topControlsView: UIView!
+    @IBOutlet var plotView: EZAudioPlotGL!
     
     var playSession : PlaySession!
     
@@ -51,16 +52,27 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
         self.volumeView.autoresizingMask = .FlexibleWidth
         
         self.volumeContainerView.addSubview(self.volumeView)
+        
+        self.plotView.backgroundColor = UIColor.blueCharcoal()
+        self.plotView.color = UIColor.redLust()
+        self.plotView.plotType = .Buffer
+        self.plotView.shouldFill = true
+        self.plotView.shouldMirror = true
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         self.updateUIForNewTrack()
+        
         if (self.startPlaying == true) {
             self.startPlaying = false
-            self.onPlayPause(self.playPauseButton)
+            if (self.playSession.mediaPlayer.state != .Playing) {
+                self.onPlayPause(self.playPauseButton)
+            }
         }
+        
+        self.playSession.mediaPlayer.output.delegate = self
     }
     
     private func updateUIForNewTrack() {
@@ -69,6 +81,8 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
             self.timeSlider.minimumValue = 0.0
             self.currentTimeLabel.text = self.playSession.mediaPlayer.formattedCurrentTime
             self.remainingTimeLabel.text = self.playSession.mediaPlayer.formattedDuration
+            self.shuffleButton.selected = self.playSession.shuffle
+            self.repeatButton.selected = self.playSession.loop
         }
         
         self.navigationItem.title = self.mediaItem.title
@@ -79,7 +93,7 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
         self.mediaItem = mediaItem
         self.collection = collection
         
-        self.playSession.mediaPlayer.audioFile = EZAudioFile.init(URL: self.mediaItem.assetURL)
+        self.playSession.prepareToPlay(mediaItem, collection: collection)
         self.playSession.mediaPlayer.delegate = self
         self.startPlaying = true
         
@@ -92,8 +106,10 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
     
     @IBAction func onTimeChanged(sender: UISlider) {
         let currentTime = Double(sender.value)
+        self.playSession.mediaPlayer.pause()
         self.playSession.mediaPlayer.currentTime = currentTime
         self.updateTimeLabelsWithCurrentTime(currentTime)
+        self.playSession.mediaPlayer.play()
     }
     
     private func updateTimeLabelsWithCurrentTime(currentTime:Double) {
@@ -105,31 +121,37 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
     }
     
     @IBAction func onShuffle(sender: UIButton) {
-        
+        self.playSession.shuffle = !self.playSession.shuffle
+        self.shuffleButton.selected = self.playSession.shuffle
     }
     
     @IBAction func onRepeat(sender: UIButton) {
-
+        self.playSession.loop = !self.playSession.loop
+        self.repeatButton.selected = self.playSession.loop
     }
     
     @IBAction func onPreviousTrack(sender: UIButton) {
-        
+        self.playSession.playPreviousTrack()
+        self.mediaItem = self.playSession.currentTrack()
+        self.updateUIForNewTrack()
     }
     
     @IBAction func onPlayPause(sender: UIButton) {
-        if (self.playSession.mediaPlayer.state != .Playing) {
-            self.playSession.mediaPlayer.play()
-            let image = UIImage.init(named: "trackPauseIcon")
-            self.playPauseButton.setImage(image, forState:.Normal)
-        } else if (self.playSession.mediaPlayer.state == .Playing) {
+        if (self.playSession.mediaPlayer.state == .Playing) {
             self.playSession.mediaPlayer.pause()
             let image = UIImage.init(named: "trackPlayIcon")
+            self.playPauseButton.setImage(image, forState:.Normal)
+        } else {
+            self.playSession.mediaPlayer.play()
+            let image = UIImage.init(named: "trackPauseIcon")
             self.playPauseButton.setImage(image, forState:.Normal)
         }
     }
     
     @IBAction func onNextTrack(sender: AnyObject) {
-        
+        self.playSession.playNextTrack()
+        self.mediaItem = self.playSession.currentTrack()
+        self.updateUIForNewTrack()
     }
     
     func audioPlayer(audioPlayer: EZAudioPlayer!, updatedPosition framePosition: Int64, inAudioFile audioFile: EZAudioFile!) {
@@ -140,4 +162,13 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
         }
     }
     
+    func audioPlayer(audioPlayer: EZAudioPlayer!, reachedEndOfAudioFile audioFile: EZAudioFile!) {
+        self.playSession.playNextTrack()
+    }
+    
+    func output(output: EZOutput!, playedAudio buffer: UnsafeMutablePointer<UnsafeMutablePointer<Float>>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.plotView.updateBuffer(buffer[0], withBufferSize: bufferSize)
+        }
+    }
 }
