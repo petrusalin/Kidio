@@ -5,3 +5,4 @@ use_frameworks!
 pod 'AFNetworking', '~> 3.0'
 pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
 pod 'APLfm', :git => 'https://github.com/petrusalin/APLfm.git'
+pod 'EZAudio', '~> 1.1.4'

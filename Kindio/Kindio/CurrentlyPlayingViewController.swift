@@ -9,8 +9,9 @@
 import UIKit
 import MediaPlayer
 import APLfm
+import EZAudio
 
-class CurrentlyPlayingViewController: UIViewController {
+class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate {
     
     @IBOutlet var currentTimeLabel: UILabel!
     @IBOutlet var remainingTimeLabel: UILabel!
@@ -24,11 +25,8 @@ class CurrentlyPlayingViewController: UIViewController {
     @IBOutlet var bottomControlsView: UIView!
     @IBOutlet var topControlsView: UIView!
     
-    var playSession : PlaySession! {
-        didSet {
-            self.playSession.mediaPlayer.beginGeneratingPlaybackNotifications()
-        }
-    }
+    var playSession : PlaySession!
+    
     var mediaItem : MPMediaItem! {
         didSet {
             self.mediaItemScrobbled = false
@@ -38,7 +36,6 @@ class CurrentlyPlayingViewController: UIViewController {
     
     var collection : MPMediaItemCollection!
     private var volumeView : MPVolumeView!
-    private var playbackTimer : CADisplayLink!
     private var startPlaying = false
     private var mediaItemScrobbled = false
     private var mediaItemStartTimestamp = 0
@@ -50,24 +47,10 @@ class CurrentlyPlayingViewController: UIViewController {
         self.topControlsView.backgroundColor = UIColor.blackColor()
         self.view.backgroundColor = UIColor.blueCharcoal()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(CurrentlyPlayingViewController.onTrackChanged),  name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
-        
         self.volumeView = MPVolumeView.init(frame: CGRectMake(0, 0, self.volumeContainerView.frame.size.width, self.volumeContainerView.frame.size.height))
         self.volumeView.autoresizingMask = .FlexibleWidth
         
         self.volumeContainerView.addSubview(self.volumeView)
-        
-        if (self.playSession.mediaPlayer.shuffleMode == .Off) {
-            self.shuffleButton.selected = false
-        } else {
-            self.shuffleButton.selected = true
-        }
-        
-        if (self.playSession.mediaPlayer.repeatMode == .None) {
-            self.repeatButton.selected = false
-        } else if (self.playSession.mediaPlayer.repeatMode == .All) {
-            self.repeatButton.selected = true
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -80,23 +63,12 @@ class CurrentlyPlayingViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
-         super.viewWillDisappear(animated)
-        
-        self.invalidatePlaybackTimer()
-    }
-    
-    func onTrackChanged() {
-        self.mediaItem = self.playSession.mediaPlayer.nowPlayingItem
-        
-        self.updateUIForNewTrack()
-    }
-    
-    
     private func updateUIForNewTrack() {
         if let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) {
             self.timeSlider.maximumValue = duration.floatValue
             self.timeSlider.minimumValue = 0.0
+            self.currentTimeLabel.text = self.playSession.mediaPlayer.formattedCurrentTime
+            self.remainingTimeLabel.text = self.playSession.mediaPlayer.formattedDuration
         }
         
         self.navigationItem.title = self.mediaItem.title
@@ -107,8 +79,8 @@ class CurrentlyPlayingViewController: UIViewController {
         self.mediaItem = mediaItem
         self.collection = collection
         
-        self.playSession.mediaPlayer.setQueueWithItemCollection(collection)
-        self.playSession.mediaPlayer.nowPlayingItem = mediaItem
+        self.playSession.mediaPlayer.audioFile = EZAudioFile.init(URL: self.mediaItem.assetURL)
+        self.playSession.mediaPlayer.delegate = self
         self.startPlaying = true
         
         if let title = mediaItem.title , artist = mediaItem.artist {
@@ -118,39 +90,9 @@ class CurrentlyPlayingViewController: UIViewController {
         }
     }
     
-    private func startPlaybackTimer() {
-        self.playbackTimer = CADisplayLink.init(target: self, selector: #selector(CurrentlyPlayingViewController.onPlaybackTimerFired(_:)))
-            self.playbackTimer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode:UITrackingRunLoopMode)
-            self.playbackTimer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode:NSRunLoopCommonModes)
-            self.playbackTimer.frameInterval = 60
-    }
-    
-    private func invalidatePlaybackTimer() {
-        if (self.playbackTimer != nil) {
-            self.playbackTimer.invalidate()
-            self.playbackTimer = nil
-        }
-    }
-    
-    func onPlaybackTimerFired(timer : NSTimer) {
-        let currentTime = Float(self.playSession.mediaPlayer.currentPlaybackTime)
-        self.timeSlider.value = currentTime
-        self.updateTimeLabelsWithCurrentTime(Double(currentTime))
-        
-        if (LastfmManager.sharedInstance.isLoggedIn() && Double(currentTime) >= self.mediaItem.playbackDuration / 2 && self.mediaItemScrobbled == false) {
-            self.mediaItemScrobbled = true
-            
-            LastfmManager.sharedInstance.scrobble(self.mediaItem.title!, artist: self.mediaItem.artist!, timestamp: self.mediaItemStartTimestamp, completion: { (error) in
-                if (error != nil) {
-                    self.mediaItemScrobbled = false
-                }
-            })
-        }
-    }
-    
     @IBAction func onTimeChanged(sender: UISlider) {
         let currentTime = Double(sender.value)
-        self.playSession.mediaPlayer.currentPlaybackTime = currentTime
+        self.playSession.mediaPlayer.currentTime = currentTime
         self.updateTimeLabelsWithCurrentTime(currentTime)
     }
     
@@ -163,45 +105,39 @@ class CurrentlyPlayingViewController: UIViewController {
     }
     
     @IBAction func onShuffle(sender: UIButton) {
-        if (self.playSession.mediaPlayer.shuffleMode == .Off) {
-            self.playSession.mediaPlayer.shuffleMode = .Songs
-            sender.selected = true
-        } else if (self.playSession.mediaPlayer.shuffleMode == .Songs) {
-            self.playSession.mediaPlayer.shuffleMode = .Off
-            sender.selected = false
-        }
+        
     }
     
     @IBAction func onRepeat(sender: UIButton) {
-        if (self.playSession.mediaPlayer.repeatMode == .None) {
-            self.playSession.mediaPlayer.repeatMode = .All
-            sender.selected = true
-        } else if (self.playSession.mediaPlayer.repeatMode == .All) {
-            self.playSession.mediaPlayer.repeatMode = .None
-            sender.selected = false
-        }
+
     }
     
     @IBAction func onPreviousTrack(sender: UIButton) {
-        self.playSession.mediaPlayer.skipToPreviousItem()
+        
     }
     
     @IBAction func onPlayPause(sender: UIButton) {
-        if (self.playSession.mediaPlayer.playbackState != .Playing) {
+        if (self.playSession.mediaPlayer.state != .Playing) {
             self.playSession.mediaPlayer.play()
             let image = UIImage.init(named: "trackPauseIcon")
             self.playPauseButton.setImage(image, forState:.Normal)
-            self.startPlaybackTimer()
-        } else if (self.playSession.mediaPlayer.playbackState == .Playing) {
+        } else if (self.playSession.mediaPlayer.state == .Playing) {
             self.playSession.mediaPlayer.pause()
             let image = UIImage.init(named: "trackPlayIcon")
             self.playPauseButton.setImage(image, forState:.Normal)
-            self.invalidatePlaybackTimer()
         }
     }
     
     @IBAction func onNextTrack(sender: AnyObject) {
-        self.playSession.mediaPlayer.skipToNextItem()
+        
+    }
+    
+    func audioPlayer(audioPlayer: EZAudioPlayer!, updatedPosition framePosition: Int64, inAudioFile audioFile: EZAudioFile!) {
+        dispatch_async(dispatch_get_main_queue()) { 
+            self.timeSlider.value = Float(audioPlayer.currentTime)
+            self.currentTimeLabel.text = self.playSession.mediaPlayer.formattedCurrentTime
+            self.remainingTimeLabel.text = self.playSession.mediaPlayer.formattedDuration
+        }
     }
     
 }

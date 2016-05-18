@@ -65,6 +65,8 @@ class KDTabBarController: UITabBarController {
                 self.onArtistsSelected()
             case 2:
                 self.onAlbumsSelected()
+            case 3:
+                self.onSettingsSelected()
             default:
                 break;
             }
@@ -84,5 +86,9 @@ class KDTabBarController: UITabBarController {
     private func onAlbumsSelected() {
         self.albumsTableViewController().playSession = self.playSession
         self.albumsTableViewController().query = self.playSession.musicCollectionManager.albumsQuery
+    }
+    
+    private func onSettingsSelected() {
+        self.settingsTableViewController().playSession = self.playSession
     }
 }

@@ -13,6 +13,10 @@
 		2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */; };
 		2551BF531CE1DE2100A71403 /* LastfmLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */; };
 		255A2ADC1CE3273A003FF72A /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A2ADB1CE3273A003FF72A /* UIView+Loading.swift */; };
+		256A79D81CEB1BA200205C11 /* EqualizerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A79D71CEB1BA200205C11 /* EqualizerOutput.swift */; };
+		256A79DB1CEB467D00205C11 /* EqualizerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A79D91CEB467D00205C11 /* EqualizerTableViewController.swift */; };
+		256A79DC1CEB467D00205C11 /* EqualizerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 256A79DA1CEB467D00205C11 /* EqualizerTableViewController.xib */; };
+		256A79DE1CEB49B800205C11 /* EqualizerAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A79DD1CEB49B800205C11 /* EqualizerAudioPlayer.swift */; };
 		257EF7061CD8966D00D0D489 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257EF7051CD8966D00D0D489 /* AppDelegate.swift */; };
 		257EF70B1CD8966D00D0D489 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257EF7091CD8966D00D0D489 /* Main.storyboard */; };
 		257EF70E1CD8966D00D0D489 /* Kindio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 257EF70C1CD8966D00D0D489 /* Kindio.xcdatamodeld */; };
@@ -48,6 +52,10 @@
 		2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmLoginViewController.swift; sourceTree = "<group>"; };
 		2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastfmLoginViewController.xib; sourceTree = "<group>"; };
 		255A2ADB1CE3273A003FF72A /* UIView+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Loading.swift"; sourceTree = "<group>"; };
+		256A79D71CEB1BA200205C11 /* EqualizerOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerOutput.swift; sourceTree = "<group>"; };
+		256A79D91CEB467D00205C11 /* EqualizerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerTableViewController.swift; sourceTree = "<group>"; };
+		256A79DA1CEB467D00205C11 /* EqualizerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EqualizerTableViewController.xib; sourceTree = "<group>"; };
+		256A79DD1CEB49B800205C11 /* EqualizerAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerAudioPlayer.swift; sourceTree = "<group>"; };
 		257EF7021CD8966D00D0D489 /* Kindio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kindio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		257EF7051CD8966D00D0D489 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		257EF70A1CD8966D00D0D489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,6 +162,8 @@
 			children = (
 				257EF72E1CD8A04900D0D489 /* MusicCollectionsManager.swift */,
 				257EF7301CD8C0C700D0D489 /* PlaySession.swift */,
+				256A79D71CEB1BA200205C11 /* EqualizerOutput.swift */,
+				256A79DD1CEB49B800205C11 /* EqualizerAudioPlayer.swift */,
 			);
 			name = MusicBL;
 			sourceTree = "<group>";
@@ -201,6 +211,8 @@
 				25DCE01A1CDA37260056DD8D /* CurrentlyPlayingViewController.xib */,
 				2596061D1CE0EC9D00FAF1C3 /* SongsTableViewController.swift */,
 				2596061E1CE0EC9D00FAF1C3 /* SongsTableViewController.xib */,
+				256A79D91CEB467D00205C11 /* EqualizerTableViewController.swift */,
+				256A79DA1CEB467D00205C11 /* EqualizerTableViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -288,6 +300,7 @@
 				25DCE0111CD9F7DC0056DD8D /* Podfile in Resources */,
 				25DCE01C1CDA37260056DD8D /* CurrentlyPlayingViewController.xib in Resources */,
 				257EF7371CD8C5A700D0D489 /* AudioAssetCell.xib in Resources */,
+				256A79DC1CEB467D00205C11 /* EqualizerTableViewController.xib in Resources */,
 				257EF7101CD8966D00D0D489 /* Assets.xcassets in Resources */,
 				257EF70B1CD8966D00D0D489 /* Main.storyboard in Resources */,
 				2551BF531CE1DE2100A71403 /* LastfmLoginViewController.xib in Resources */,
@@ -360,7 +373,10 @@
 				257EF70E1CD8966D00D0D489 /* Kindio.xcdatamodeld in Sources */,
 				257EF7361CD8C5A700D0D489 /* AudioAssetCell.swift in Sources */,
 				2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */,
+				256A79D81CEB1BA200205C11 /* EqualizerOutput.swift in Sources */,
+				256A79DE1CEB49B800205C11 /* EqualizerAudioPlayer.swift in Sources */,
 				2596061F1CE0EC9D00FAF1C3 /* SongsTableViewController.swift in Sources */,
+				256A79DB1CEB467D00205C11 /* EqualizerTableViewController.swift in Sources */,
 				25DCE0171CDA0E6B0056DD8D /* MediaItemTableViewController.swift in Sources */,
 				257EF72B1CD89DD100D0D489 /* SettingsTableViewController.swift in Sources */,
 				259606161CE0905D00FAF1C3 /* ThemeManager.swift in Sources */,
