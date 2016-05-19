@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '87605C82D0FC7D77350EDB0A'
-               BlueprintName = 'APLfm'
+               BlueprintIdentifier = 'B1AE48BA82E57C1581C54DB2'
+               BlueprintName = 'HUMSlider'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'APLfm.framework'>
+               BuildableName = 'HUMSlider.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

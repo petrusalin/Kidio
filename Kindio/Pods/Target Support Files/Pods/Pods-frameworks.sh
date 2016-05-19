@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/APLfm.framework"
   install_framework "Pods/CryptoSwift.framework"
   install_framework "Pods/EZAudio.framework"
+  install_framework "Pods/HUMSlider.framework"
   install_framework "Pods/TPCircularBuffer.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/APLfm.framework"
   install_framework "Pods/CryptoSwift.framework"
   install_framework "Pods/EZAudio.framework"
+  install_framework "Pods/HUMSlider.framework"
   install_framework "Pods/TPCircularBuffer.framework"
 fi

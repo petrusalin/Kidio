@@ -1,0 +1,6 @@
+framework module HUMSlider {
+  umbrella header "HUMSlider-umbrella.h"
+
+  export *
+  module * { export * }
+}
