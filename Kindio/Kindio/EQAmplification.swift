@@ -50,7 +50,9 @@ class SixBandEqualizer {
     }
     
     func amplifications() -> [EQAmplification] {
-        return Array(self.amps.values)
+        return Array(self.amps.values).sort({ (amp1, amp2) -> Bool in
+            amp1.band.rawValue < amp2.band.rawValue
+        })
     }
     
     func setAmplificationConfiguration(amps: [EqualizerBand : EQAmplification]) {
@@ -66,5 +68,6 @@ class SixBandEqualizer {
     func setAmplification(amp: Float, band:EqualizerBand) {
         var amplification = self.amps[band]
         amplification!.gain = amp
+        self.amps[band] = amplification
     }
 }

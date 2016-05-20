@@ -9,11 +9,7 @@
 import UIKit
 
 class SixBandEqualizerManager: NSObject {
-    var sixBandEqualizer = SixBandEqualizer() {
-        didSet {
-            self.setInitialSliderValues()
-        }
-    }
+    var sixBandEqualizer : SixBandEqualizer?
     var sliders : [EqualizerSlider!]
     var playSession : PlaySession
     
@@ -23,9 +19,19 @@ class SixBandEqualizerManager: NSObject {
         
         super.init()
         
-        assert(sixBandEqualizer.amplifications().count == sliders.count, "Need an equal number of sliders and amps")
+        
+        if let eq = self.playSession.sixBandEqualizer {
+            self.sixBandEqualizer = eq
+            print("Woot")
+        } else {
+            self.sixBandEqualizer = SixBandEqualizer()
+            print("Nooo")
+        }
         
         self.establishConnections()
+        self.setInitialSliderValues()
+        
+        assert(sixBandEqualizer!.amplifications().count == sliders.count, "Need an equal number of sliders and amps")
     }
     
     // MARK : private
@@ -33,7 +39,7 @@ class SixBandEqualizerManager: NSObject {
     func establishConnections() {
         for index in 0..<self.sliders.count {
             let slider =  self.sliders[index]
-            let amplification = self.sixBandEqualizer.amplifications()[index]
+            let amplification = self.sixBandEqualizer!.amplifications()[index]
             slider.tag = amplification.band.rawValue
             slider.addTarget(self, action: #selector(self.onGainChanged(_:)), forControlEvents: .ValueChanged)
         }
@@ -42,18 +48,22 @@ class SixBandEqualizerManager: NSObject {
     func setInitialSliderValues() {
         for index in 0..<self.sliders.count {
             let slider =  self.sliders[index]
-            let amplification = self.sixBandEqualizer.amplifications()[index]
+            let amplification = self.sixBandEqualizer!.amplifications()[index]
+            print(amplification)
             
             slider.minimumValue = EQAmplification.minGain
             slider.maximumValue = EQAmplification.maxGain
+            print(slider.value)
             slider.value = amplification.gain
         }
     }
     
     // MARK : actions
     func onGainChanged(slider: EqualizerSlider) {
-        self.sixBandEqualizer.setAmplification(slider.value, band: EqualizerBand(rawValue: slider.tag)!)
-        self.playSession.updatedSixBandEqualizer(self.sixBandEqualizer)
+        print(slider.value)
+        print(EqualizerBand(rawValue: slider.tag)!)
+        self.sixBandEqualizer!.setAmplification(slider.value, band: EqualizerBand(rawValue: slider.tag)!)
+        self.playSession.updatedSixBandEqualizer(self.sixBandEqualizer!)
     }
 
 }

@@ -22,6 +22,7 @@ class PlaySession: NSObject {
     private var mediaItems = [MPMediaItem]()
     private var currentMediaItemIndex = 0
     private var collection : MPMediaItemCollection?
+    var sixBandEqualizer : SixBandEqualizer?
     
     var shuffle  = NSUserDefaults.standardUserDefaults().boolForKey(shuffleSaveKey) {
         willSet(newValue) {
@@ -81,6 +82,7 @@ class PlaySession: NSObject {
     
     func updatedSixBandEqualizer(equalizer: SixBandEqualizer) {
         self.mediaPlayer.pause()
+        self.sixBandEqualizer = equalizer
         let delegate = self.mediaPlayer.output.delegate
         self.mediaPlayer.output = ConfigurableEqualizerOutput.init(equalizer: equalizer)
         self.mediaPlayer.output.delegate = delegate

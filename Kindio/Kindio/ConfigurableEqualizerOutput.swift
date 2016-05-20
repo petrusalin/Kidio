@@ -11,7 +11,7 @@ import EZAudio
 
 class ConfigurableEqualizerOutput: EZOutput {
     var eqNodeInfo = EZAudioNodeInfo()
-    var sixBandEqualizer : SixBandEqualizer?
+    var sixBandEqualizer : SixBandEqualizer
     
     init(equalizer: SixBandEqualizer) {
         sixBandEqualizer = equalizer
@@ -37,37 +37,36 @@ class ConfigurableEqualizerOutput: EZOutput {
     }
     
     func configure() {
-        if let sbe = self.sixBandEqualizer {
-            var noBands = UInt32(sbe.amplifications().count)
-            // Set the number of bands first
-            AudioUnitSetProperty(self.eqNodeInfo.audioUnit,
-                                 kAUNBandEQProperty_NumberOfBands,
-                                 kAudioUnitScope_Global,
-                                 0,
-                                 &noBands,
-                                 UInt32(sizeof(UInt32)));
-            
-            for (index, amp) in sbe.amplifications().enumerate() {
-                AudioUnitSetParameter(self.eqNodeInfo.audioUnit,
-                                      kAUNBandEQParam_Frequency + UInt32(index),
-                                      kAudioUnitScope_Global,
-                                      0,
-                                      AudioUnitParameterValue(amp.band.rawValue),
-                                      0)
-                AudioUnitSetParameter(self.eqNodeInfo.audioUnit,
-                                      kAUNBandEQParam_BypassBand + UInt32(index),
-                                      kAudioUnitScope_Global,
-                                      0,
-                                      AudioUnitParameterValue(0),
-                                      0)
-                AudioUnitSetParameter(self.eqNodeInfo.audioUnit,
-                                      kAUNBandEQParam_Gain + UInt32(index),
-                                      kAudioUnitScope_Global,
-                                      0,
-                                      AudioUnitParameterValue(amp.gain),
-                                      0)
-            }
+        var noBands = UInt32(self.sixBandEqualizer.amplifications().count)
+        // Set the number of bands first
+        AudioUnitSetProperty(self.eqNodeInfo.audioUnit,
+                             kAUNBandEQProperty_NumberOfBands,
+                             kAudioUnitScope_Global,
+                             0,
+                             &noBands,
+                             UInt32(sizeof(UInt32)));
+        
+        for (index, amp) in self.sixBandEqualizer.amplifications().enumerate() {
+            AudioUnitSetParameter(self.eqNodeInfo.audioUnit,
+                                  kAUNBandEQParam_Frequency + UInt32(index),
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  AudioUnitParameterValue(amp.band.rawValue),
+                                  0)
+            AudioUnitSetParameter(self.eqNodeInfo.audioUnit,
+                                  kAUNBandEQParam_BypassBand + UInt32(index),
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  AudioUnitParameterValue(0),
+                                  0)
+            AudioUnitSetParameter(self.eqNodeInfo.audioUnit,
+                                  kAUNBandEQParam_Gain + UInt32(index),
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  AudioUnitParameterValue(amp.gain),
+                                  0)
         }
+        
     }
     
 }
