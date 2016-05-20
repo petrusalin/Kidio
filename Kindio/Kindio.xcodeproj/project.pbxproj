@@ -23,6 +23,8 @@
 		256E04FC1CEDA22D00C5CDE3 /* AdjustableEqualizerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 256E04FA1CEDA22D00C5CDE3 /* AdjustableEqualizerViewController.xib */; };
 		256E04FF1CEDA7EE00C5CDE3 /* EqualizerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E04FE1CEDA7EE00C5CDE3 /* EqualizerSlider.swift */; };
 		256E05021CEDC07600C5CDE3 /* EQAmplification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E05011CEDC07600C5CDE3 /* EQAmplification.swift */; };
+		256E05041CEDE45700C5CDE3 /* SixBandEqualizerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E05031CEDE45700C5CDE3 /* SixBandEqualizerManager.swift */; };
+		256E05061CEDF69200C5CDE3 /* ConfigurableEqualizerOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E05051CEDF69200C5CDE3 /* ConfigurableEqualizerOutput.swift */; };
 		257EF7061CD8966D00D0D489 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257EF7051CD8966D00D0D489 /* AppDelegate.swift */; };
 		257EF70B1CD8966D00D0D489 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 257EF7091CD8966D00D0D489 /* Main.storyboard */; };
 		257EF70E1CD8966D00D0D489 /* Kindio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 257EF70C1CD8966D00D0D489 /* Kindio.xcdatamodeld */; };
@@ -68,6 +70,8 @@
 		256E04FA1CEDA22D00C5CDE3 /* AdjustableEqualizerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdjustableEqualizerViewController.xib; sourceTree = "<group>"; };
 		256E04FE1CEDA7EE00C5CDE3 /* EqualizerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerSlider.swift; sourceTree = "<group>"; };
 		256E05011CEDC07600C5CDE3 /* EQAmplification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EQAmplification.swift; sourceTree = "<group>"; };
+		256E05031CEDE45700C5CDE3 /* SixBandEqualizerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixBandEqualizerManager.swift; sourceTree = "<group>"; };
+		256E05051CEDF69200C5CDE3 /* ConfigurableEqualizerOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableEqualizerOutput.swift; sourceTree = "<group>"; };
 		257EF7021CD8966D00D0D489 /* Kindio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kindio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		257EF7051CD8966D00D0D489 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		257EF70A1CD8966D00D0D489 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,8 +128,10 @@
 			isa = PBXGroup;
 			children = (
 				256A79D71CEB1BA200205C11 /* EqualizerOutput.swift */,
+				256E05051CEDF69200C5CDE3 /* ConfigurableEqualizerOutput.swift */,
 				256A79DD1CEB49B800205C11 /* EqualizerAudioPlayer.swift */,
 				256E05011CEDC07600C5CDE3 /* EQAmplification.swift */,
+				256E05031CEDE45700C5CDE3 /* SixBandEqualizerManager.swift */,
 			);
 			name = Equalizer;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				257EF7361CD8C5A700D0D489 /* AudioAssetCell.swift in Sources */,
 				256E04F81CEDA17200C5CDE3 /* BaseTableViewController.swift in Sources */,
 				2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */,
+				256E05041CEDE45700C5CDE3 /* SixBandEqualizerManager.swift in Sources */,
 				256A79D81CEB1BA200205C11 /* EqualizerOutput.swift in Sources */,
 				256A79DE1CEB49B800205C11 /* EqualizerAudioPlayer.swift in Sources */,
 				2596061F1CE0EC9D00FAF1C3 /* SongsTableViewController.swift in Sources */,
@@ -419,6 +426,7 @@
 				25DCE0171CDA0E6B0056DD8D /* MediaItemTableViewController.swift in Sources */,
 				257EF72B1CD89DD100D0D489 /* SettingsTableViewController.swift in Sources */,
 				259606161CE0905D00FAF1C3 /* ThemeManager.swift in Sources */,
+				256E05061CEDF69200C5CDE3 /* ConfigurableEqualizerOutput.swift in Sources */,
 				256E05021CEDC07600C5CDE3 /* EQAmplification.swift in Sources */,
 				257EF7311CD8C0C700D0D489 /* PlaySession.swift in Sources */,
 				257EF71C1CD8969D00D0D489 /* CoreDataManager.swift in Sources */,

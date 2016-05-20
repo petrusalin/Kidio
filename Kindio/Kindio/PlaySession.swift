@@ -79,6 +79,12 @@ class PlaySession: NSObject {
         self.mediaPlayer.selectEQPreset(preset)
     }
     
+    func updatedSixBandEqualizer(equalizer: SixBandEqualizer) {
+        self.mediaPlayer.pause()
+        self.mediaPlayer.output = ConfigurableEqualizerOutput.init(equalizer: equalizer)
+        self.mediaPlayer.play()
+    }
+    
     func playNextTrack() {
         if let track = self.nextTrack() {
             self.mediaPlayer.audioFile = EZAudioFile.init(URL: track.assetURL)

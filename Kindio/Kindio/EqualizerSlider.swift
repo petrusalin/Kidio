@@ -9,7 +9,6 @@
 import UIKit
 
 class EqualizerSlider: VerticalSlider {
-
     override func customize() {
         super.customize()
         

@@ -18,6 +18,7 @@ class AdjustableEqualizerViewController: UIViewController {
     @IBOutlet var equalizerView: UIView!
     
     var playSession: PlaySession?
+    var equalizerManager : SixBandEqualizerManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,9 @@ class AdjustableEqualizerViewController: UIViewController {
         self.equalizerView.backgroundColor = UIColor.blueCharcoal()
         
         self.title = "Customize Equalizer"
+        
+        let sliders = [self.frequency1Slider, self.frequency2Slider, self.frequency3Slider, self.frequency4Slider, self.frequency5Slider, self.frequency6Slider];
+        self.equalizerManager = SixBandEqualizerManager.init(sliders: sliders, playSession: self.playSession!)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,7 +39,5 @@ class AdjustableEqualizerViewController: UIViewController {
         rotation = CGAffineTransformRotate(rotation, CGFloat.init(-(M_PI / 2)))
         self.equalizerView.transform = rotation
     }
-    
-    // MARK: Private
   
 }

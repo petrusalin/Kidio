@@ -79,7 +79,8 @@ class EqualizerTableViewController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if (indexPath.section == 0) {
-            let eqVC = AdjustableEqualizerViewController()
+            let eqVC = AdjustableEqualizerViewController() as AdjustableEqualizerViewController
+            eqVC.playSession = self.playSession
             self.navigationController?.pushViewController(eqVC, animated: true)
         } else {
             if let session = self.playSession {
