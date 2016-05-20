@@ -30,6 +30,10 @@ class AdjustableEqualizerViewController: UIViewController {
         
         let sliders = [self.frequency1Slider, self.frequency2Slider, self.frequency3Slider, self.frequency4Slider, self.frequency5Slider, self.frequency6Slider];
         self.equalizerManager = SixBandEqualizerManager.init(sliders: sliders, playSession: self.playSession!)
+        
+        let resetImage = UIImage.init(imageLiteral: "reset")
+        let resetButton = UIBarButtonItem.init(image: resetImage, style: .Plain, target: self, action: #selector(self.onResetEqualizer))
+        self.navigationItem.rightBarButtonItem = resetButton
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -40,4 +44,7 @@ class AdjustableEqualizerViewController: UIViewController {
         self.equalizerView.transform = rotation
     }
   
+    func onResetEqualizer() {
+        self.equalizerManager.reset()
+    }
 }

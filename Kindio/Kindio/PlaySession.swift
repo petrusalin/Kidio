@@ -81,12 +81,20 @@ class PlaySession: NSObject {
     }
     
     func updatedSixBandEqualizer(equalizer: SixBandEqualizer) {
-        self.mediaPlayer.pause()
+        let wasPlaying = (self.mediaPlayer.state == .Playing)
+        
+        if (wasPlaying) {
+            self.mediaPlayer.pause()
+        }
+        
         self.sixBandEqualizer = equalizer
         let delegate = self.mediaPlayer.output.delegate
         self.mediaPlayer.output = ConfigurableEqualizerOutput.init(equalizer: equalizer)
         self.mediaPlayer.output.delegate = delegate
-        self.mediaPlayer.play()
+        
+        if (wasPlaying) {
+            self.mediaPlayer.play()
+        }
     }
     
     func playNextTrack() {
