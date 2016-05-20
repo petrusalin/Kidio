@@ -81,7 +81,9 @@ class PlaySession: NSObject {
     
     func updatedSixBandEqualizer(equalizer: SixBandEqualizer) {
         self.mediaPlayer.pause()
+        let delegate = self.mediaPlayer.output.delegate
         self.mediaPlayer.output = ConfigurableEqualizerOutput.init(equalizer: equalizer)
+        self.mediaPlayer.output.delegate = delegate
         self.mediaPlayer.play()
     }
     

@@ -26,6 +26,7 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
     @IBOutlet var topControlsView: UIView!
     @IBOutlet var plotView: EZAudioPlotGL!
     
+    private var isPlottingAudio = false
     var playSession : PlaySession!
     
     var mediaItem : MPMediaItem! {
@@ -63,6 +64,12 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.plotView.clear()
+        self.plotView.resumeDrawing()
+        self.isPlottingAudio = true
+        
+        self.playSession.mediaPlayer.output.delegate = self
+        
         self.updateUIForNewTrack()
         
         if (self.startPlaying == true) {
@@ -71,12 +78,18 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
                 self.onPlayPause(self.playPauseButton)
             }
         }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        self.playSession.mediaPlayer.output.delegate = self
+        self.plotView.clear()
+        self.plotView.pauseDrawing()
+        self.isPlottingAudio = false
     }
     
     private func updateUIForNewTrack() {
-        if let duration = mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) {
+        if let duration = self.mediaItem.valueForProperty(MPMediaItemPropertyPlaybackDuration) {
             self.timeSlider.maximumValue = duration.floatValue
             self.timeSlider.minimumValue = 0.0
             self.currentTimeLabel.text = self.playSession.mediaPlayer.formattedCurrentTime
@@ -155,7 +168,7 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
     }
     
     func audioPlayer(audioPlayer: EZAudioPlayer!, updatedPosition framePosition: Int64, inAudioFile audioFile: EZAudioFile!) {
-        dispatch_async(dispatch_get_main_queue()) { 
+        dispatch_async(dispatch_get_main_queue()) {
             self.timeSlider.value = Float(audioPlayer.currentTime)
             self.currentTimeLabel.text = self.playSession.mediaPlayer.formattedCurrentTime
             self.remainingTimeLabel.text = self.playSession.mediaPlayer.formattedDuration
@@ -167,8 +180,10 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
     }
     
     func output(output: EZOutput!, playedAudio buffer: UnsafeMutablePointer<UnsafeMutablePointer<Float>>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.plotView.updateBuffer(buffer[0], withBufferSize: bufferSize)
+        if self.isPlottingAudio {
+            dispatch_async(dispatch_get_main_queue()) {
+                self.plotView.updateBuffer(buffer[0], withBufferSize: bufferSize)
+            }
         }
     }
 }

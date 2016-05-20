@@ -10,13 +10,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Kindio/CurrentlyPlayingViewController.swift"
-            timestampString = "485362795.546186"
+            timestampString = "485420027.30121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "onPlayPause(_:)"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "output(_:playedAudio:withBufferSize:withNumberOfChannels:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kindio.CurrentlyPlayingViewController.output (Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.EZOutput&gt;, playedAudio : Swift.UnsafeMutablePointer&lt;Swift.UnsafeMutablePointer&lt;Swift.Float&gt;&gt;, withBufferSize : Swift.UInt32, withNumberOfChannels : Swift.UInt32) -&gt; ()"
+                  moduleName = "Kindio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alinpetrus/tryouts/Projects/Kindio/Kindio/Kindio/CurrentlyPlayingViewController.swift"
+                  timestampString = "485420027.502085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "184"
+                  endingLineNumber = "184"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kindio.CurrentlyPlayingViewController.(output (Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.EZOutput&gt;, playedAudio : Swift.UnsafeMutablePointer&lt;Swift.UnsafeMutablePointer&lt;Swift.Float&gt;&gt;, withBufferSize : Swift.UInt32, withNumberOfChannels : Swift.UInt32) -&gt; ()).(closure #1)"
+                  moduleName = "Kindio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alinpetrus/tryouts/Projects/Kindio/Kindio/Kindio/CurrentlyPlayingViewController.swift"
+                  timestampString = "485420027.502364"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
