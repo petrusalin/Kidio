@@ -33,6 +33,14 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
         didSet {
             self.mediaItemScrobbled = false
             self.mediaItemStartTimestamp = Int(NSDate.init().timeIntervalSince1970)
+            
+            if let title = mediaItem.title , artist = mediaItem.artist {
+                LastfmManager.sharedInstance.updateNowPlaying(title, artist: artist, completion: { (error) in
+                    if (error != nil) {
+                        print(error)
+                    }
+                })
+            }
         }
     }
     
@@ -109,12 +117,6 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
         self.playSession.prepareToPlay(mediaItem, collection: collection)
         self.playSession.mediaPlayer.delegate = self
         self.startPlaying = true
-        
-        if let title = mediaItem.title , artist = mediaItem.artist {
-            LastfmManager.sharedInstance.updateNowPlaying(title, artist: artist, completion: { (error) in
-                
-            })
-        }
     }
     
     @IBAction func onTimeChanged(sender: UISlider) {
@@ -172,6 +174,15 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
             self.timeSlider.value = Float(audioPlayer.currentTime)
             self.currentTimeLabel.text = self.playSession.mediaPlayer.formattedCurrentTime
             self.remainingTimeLabel.text = self.playSession.mediaPlayer.formattedDuration
+            
+            if (self.mediaItemScrobbled == false && audioPlayer.currentTime > audioPlayer.duration / 2) {
+                self.mediaItemScrobbled = true
+                LastfmManager.sharedInstance.scrobble(self.mediaItem.title!, artist: self.mediaItem.artist!, timestamp: self.mediaItemStartTimestamp, completion: { (error) in
+                    if (error != nil) {
+                        print(error)
+                    }
+                })
+            }
         }
     }
     

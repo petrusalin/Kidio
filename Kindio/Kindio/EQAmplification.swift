@@ -19,7 +19,7 @@ enum EqualizerBand: Int {
     static let allValues = [Band32, Band250, Band500, Band1000, Band2000, Band16000]
 }
 
-struct EQAmplification {
+class EQAmplification {
     static let minGain : Float = -96.0
     static let maxGain : Float = 24.0
     
@@ -66,8 +66,7 @@ class SixBandEqualizer {
     }
     
     func setAmplification(amp: Float, band:EqualizerBand) {
-        var amplification = self.amps[band]
+        let amplification = self.amps[band]
         amplification!.gain = amp
-        self.amps[band] = amplification
     }
 }

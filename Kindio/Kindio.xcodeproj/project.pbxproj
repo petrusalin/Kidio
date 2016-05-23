@@ -17,6 +17,10 @@
 		256A79DB1CEB467D00205C11 /* EqualizerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A79D91CEB467D00205C11 /* EqualizerTableViewController.swift */; };
 		256A79DC1CEB467D00205C11 /* EqualizerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 256A79DA1CEB467D00205C11 /* EqualizerTableViewController.xib */; };
 		256A79DE1CEB49B800205C11 /* EqualizerAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A79DD1CEB49B800205C11 /* EqualizerAudioPlayer.swift */; };
+		256A86371CF2F68D00692324 /* EQAmplificationContainer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A86331CF2F68D00692324 /* EQAmplificationContainer+CoreDataProperties.swift */; };
+		256A86381CF2F68D00692324 /* EQAmplificationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A86341CF2F68D00692324 /* EQAmplificationContainer.swift */; };
+		256A86391CF2F68D00692324 /* SixBandEqualizerContainer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A86351CF2F68D00692324 /* SixBandEqualizerContainer+CoreDataProperties.swift */; };
+		256A863A1CF2F68D00692324 /* SixBandEqualizerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A86361CF2F68D00692324 /* SixBandEqualizerContainer.swift */; };
 		256E04F61CED964600C5CDE3 /* VerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E04F51CED964600C5CDE3 /* VerticalSlider.swift */; };
 		256E04F81CEDA17200C5CDE3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E04F71CEDA17200C5CDE3 /* BaseTableViewController.swift */; };
 		256E04FB1CEDA22D00C5CDE3 /* AdjustableEqualizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E04F91CEDA22D00C5CDE3 /* AdjustableEqualizerViewController.swift */; };
@@ -64,6 +68,10 @@
 		256A79D91CEB467D00205C11 /* EqualizerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerTableViewController.swift; sourceTree = "<group>"; };
 		256A79DA1CEB467D00205C11 /* EqualizerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EqualizerTableViewController.xib; sourceTree = "<group>"; };
 		256A79DD1CEB49B800205C11 /* EqualizerAudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerAudioPlayer.swift; sourceTree = "<group>"; };
+		256A86331CF2F68D00692324 /* EQAmplificationContainer+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EQAmplificationContainer+CoreDataProperties.swift"; path = "../EQAmplificationContainer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		256A86341CF2F68D00692324 /* EQAmplificationContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EQAmplificationContainer.swift; path = ../EQAmplificationContainer.swift; sourceTree = "<group>"; };
+		256A86351CF2F68D00692324 /* SixBandEqualizerContainer+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SixBandEqualizerContainer+CoreDataProperties.swift"; path = "../SixBandEqualizerContainer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		256A86361CF2F68D00692324 /* SixBandEqualizerContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SixBandEqualizerContainer.swift; path = ../SixBandEqualizerContainer.swift; sourceTree = "<group>"; };
 		256E04F51CED964600C5CDE3 /* VerticalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalSlider.swift; sourceTree = "<group>"; };
 		256E04F71CEDA17200C5CDE3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		256E04F91CEDA22D00C5CDE3 /* AdjustableEqualizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustableEqualizerViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +186,10 @@
 		257EF71A1CD8968200D0D489 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				256A86331CF2F68D00692324 /* EQAmplificationContainer+CoreDataProperties.swift */,
+				256A86341CF2F68D00692324 /* EQAmplificationContainer.swift */,
+				256A86351CF2F68D00692324 /* SixBandEqualizerContainer+CoreDataProperties.swift */,
+				256A86361CF2F68D00692324 /* SixBandEqualizerContainer.swift */,
 				257EF71B1CD8969D00D0D489 /* CoreDataManager.swift */,
 			);
 			name = "Core Data";
@@ -413,10 +425,12 @@
 				257EF7271CD89DB800D0D489 /* TracksTableViewController.swift in Sources */,
 				257EF72F1CD8A04900D0D489 /* MusicCollectionsManager.swift in Sources */,
 				254C79C51CDB8EC200C7F5BA /* String+Duration.swift in Sources */,
+				256A86391CF2F68D00692324 /* SixBandEqualizerContainer+CoreDataProperties.swift in Sources */,
 				257EF70E1CD8966D00D0D489 /* Kindio.xcdatamodeld in Sources */,
 				257EF7361CD8C5A700D0D489 /* AudioAssetCell.swift in Sources */,
 				256E04F81CEDA17200C5CDE3 /* BaseTableViewController.swift in Sources */,
 				2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */,
+				256A863A1CF2F68D00692324 /* SixBandEqualizerContainer.swift in Sources */,
 				256E05041CEDE45700C5CDE3 /* SixBandEqualizerManager.swift in Sources */,
 				256A79D81CEB1BA200205C11 /* EqualizerOutput.swift in Sources */,
 				256A79DE1CEB49B800205C11 /* EqualizerAudioPlayer.swift in Sources */,
@@ -431,8 +445,10 @@
 				257EF7311CD8C0C700D0D489 /* PlaySession.swift in Sources */,
 				257EF71C1CD8969D00D0D489 /* CoreDataManager.swift in Sources */,
 				257EF7061CD8966D00D0D489 /* AppDelegate.swift in Sources */,
+				256A86381CF2F68D00692324 /* EQAmplificationContainer.swift in Sources */,
 				2596061C1CE0B9A400FAF1C3 /* ThemedSlider.swift in Sources */,
 				254C56D91CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift in Sources */,
+				256A86371CF2F68D00692324 /* EQAmplificationContainer+CoreDataProperties.swift in Sources */,
 				257EF72D1CD89F8900D0D489 /* KDTabBarController.swift in Sources */,
 				257EF7251CD89DA000D0D489 /* ArtistsTableViewController.swift in Sources */,
 				259606181CE0916800FAF1C3 /* UIColor+Themes.swift in Sources */,
