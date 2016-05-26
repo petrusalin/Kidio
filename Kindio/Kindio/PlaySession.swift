@@ -23,7 +23,8 @@ class PlaySession: NSObject {
     private var currentMediaItemIndex = 0
     private var collection : MPMediaItemCollection?
     var sixBandEqualizer : SixBandEqualizer?
-    var coreDataManager = CoreDataManager()
+    var coreDataManager : CoreDataManager
+    var scrobbleManager : ScrobbleManager
     
     var shuffle  = NSUserDefaults.standardUserDefaults().boolForKey(shuffleSaveKey) {
         willSet(newValue) {
@@ -50,6 +51,8 @@ class PlaySession: NSObject {
         self.audioSession = AVAudioSession.sharedInstance()
         self.mediaPlayer = EqualizerAudioPlayer.sharedAudioPlayer()
         self.mediaPlayer.output = EqualizerOutput()
+        self.coreDataManager = CoreDataManager.init()
+        self.scrobbleManager = ScrobbleManager.init(coreDataManager: self.coreDataManager)
         self.sixBandEqualizer = self.coreDataManager.equalizerSettings()
         
         do {

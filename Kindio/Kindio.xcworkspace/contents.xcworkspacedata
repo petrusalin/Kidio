@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Kindio/Scrobble+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Kindio/Scrobble.swift">
+   </FileRef>
+   <FileRef
       location = "group:Kindio.xcodeproj">
    </FileRef>
    <FileRef

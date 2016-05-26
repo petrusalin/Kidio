@@ -8,22 +8,31 @@
 
 import UIKit
 
-
+/// Convenience class used to obtain an auth request. Use this one instead of using the signed/unsigned classes for an auth request
 public class LastfmAuthRequest: LastfmRequest {
-    var username : String!
-    var password : String!
+    internal var username : String!
+    internal var password : String!
     
     override internal var baseURL : String  {
         return "https://ws.audioscrobbler.com/2.0/"
     }
     
-    public init(credential: LastfmCredential,  username: String, password: String) {
+    /*!
+     Designated initializer for the class
+     
+     - parameter credential: An instance of LastfmCredential
+     - parameter username:   Lastfm user handle
+     - parameter password:   Lastfm user password
+     
+     - returns: A request of the class ready to be executed
+     */
+    public init(credential: LastfmCredential, username: String, password: String) {
         self.username = username
         self.password = password
         
         super.init(credential: credential)
         
-        self.lastfmMethod = LastfmMethod.authMethodWithKey(self.credential.appKey)
+        self.lastfmMethod = LastfmMethod.authMethod(self.credential.appKey)
         self.lastfmMethod!.parameters[LastfmKeys.Password.rawValue] = password;
         self.lastfmMethod!.parameters[LastfmKeys.Username.rawValue] = username
         

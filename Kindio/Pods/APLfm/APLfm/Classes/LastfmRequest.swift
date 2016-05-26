@@ -10,6 +10,10 @@ import UIKit
 import AFNetworking
 import CryptoSwift
 
+/*!
+ *  Structure used to hold the data used by Lastfm to identify a client
+ */
+
 public struct LastfmCredential {
     var appKey : String!
     var secret : String!
@@ -20,6 +24,12 @@ public struct LastfmCredential {
     }
 }
 
+/*!
+ *  Base class that defines the data and processing required by any lastfm request
+ *  It should not be used directly as it does not handle things like signing requests that require it
+ *  All requests use the JSON format
+ */
+
 public class LastfmRequest: NSObject {
     internal var credential : LastfmCredential!
     internal var sessionToken : String!
@@ -28,7 +38,7 @@ public class LastfmRequest: NSObject {
         return "http://ws.audioscrobbler.com/2.0/"
     }
     
-    public init(credential: LastfmCredential) {
+    internal init(credential: LastfmCredential) {
         self.credential = credential
     }
     
@@ -58,14 +68,11 @@ public class LastfmRequest: NSObject {
         var concatenatedString = ""
         
         for key in sortedParameters {
-            if let value = dictionary[key] as? String {
-                concatenatedString += key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-                
-                if (LastfmKeys.keyRequiresUrlEncoding(key)) {
-                    concatenatedString += value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-                } else {
-                    concatenatedString += value
-                }
+            if let value =  dictionary[key] {
+                let signable = Signable(data: value)
+                concatenatedString = signable.concatenateToString(concatenatedString, withKey: key)
+            } else {
+                print(dictionary[key])
             }
         }
         

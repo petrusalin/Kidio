@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '87605C82D0FC7D77350EDB0A'
+               BlueprintIdentifier = '806B170A786FD22653773F52'
                BlueprintName = 'APLfm'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'APLfm.framework'>

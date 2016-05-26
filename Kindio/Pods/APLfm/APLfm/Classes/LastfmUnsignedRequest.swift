@@ -8,11 +8,22 @@
 
 import UIKit
 
+/// Class that provides a conveninence method to get an unsigned request
 public class LastfmUnsignedRequest: LastfmRequest {
-    public class func unsignedRequestWithMethodType(methodType: LastfmMethodType, parameters: [String : AnyObject], credentials: LastfmCredential) -> LastfmUnsignedRequest {
+    
+    /*!
+     Class method that returns an unsigned request. It handles encoding and some other configuration operations
+     
+     - parameter method:       The Lastfm resource
+     - parameter parameters:   Any required parameters except key, secret, format and resource
+     - parameter credentials:  The client credentials
+     
+     - returns: A ready to be executed LastfmRequest
+     */
+    public class func unsignedRequestWithMethodType(method: Method, parameters: [String : AnyObject], credentials: LastfmCredential) -> LastfmUnsignedRequest {
         let request = LastfmUnsignedRequest.init(credential: credentials)
         
-        request.lastfmMethod = LastfmMethod.unsignedMethodWithType(methodType, apiKey: request.credential.appKey)
+        request.lastfmMethod = LastfmMethod.unsignedMethod(method, apiKey: request.credential.appKey)
         request.lastfmMethod!.parameters.update(parameters)
         request.prepareForExecute()
         

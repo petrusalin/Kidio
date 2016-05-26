@@ -10,13 +10,107 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Kindio/CurrentlyPlayingViewController.swift"
-            timestampString = "485702542.839285"
+            timestampString = "485702528.46952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "audioPlayer(_:updatedPosition:inAudioFile:)"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "CurrentlyPlayingViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/APLfm/APLfm/Classes/LastfmMethod.swift"
+            timestampString = "485708458.606847"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964887.690102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "retryPendingScrobbles()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964887.690102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "retryPendingScrobbles()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964887.690102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "retryPendingScrobbles()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kindio.ScrobbleManager.retryPendingScrobbles () -&gt; ()"
+                  moduleName = "Kindio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alinpetrus/tryouts/Projects/Kindio/Kindio/Kindio/ScrobbleManager.swift"
+                  timestampString = "485965532.396592"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "1748">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kindio.ScrobbleManager.(retryPendingScrobbles () -&gt; ()).(closure #1)"
+                  moduleName = "Kindio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alinpetrus/tryouts/Projects/Kindio/Kindio/Kindio/ScrobbleManager.swift"
+                  timestampString = "485965532.396807"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +120,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/APLfm/APLfm/Classes/LastfmManager.swift"
-            timestampString = "485702203.138083"
+            timestampString = "485961450.780253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "scrobble(_:artist:timestamp:completion:)"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "executeRequestWithMethod(_:parameters:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +135,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/APLfm/APLfm/Classes/LastfmRequest.swift"
-            timestampString = "485702421.077207"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964887.690102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "executeWithCompletionBlock(_:)"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "retryPendingScrobbles()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +151,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/APLfm/APLfm/Classes/LastfmRequest.swift"
-            timestampString = "485702424.333814"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964887.690102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "executeWithCompletionBlock(_:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "retryPendingScrobbles()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,14 +167,78 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Kindio/CurrentlyPlayingViewController.swift"
-            timestampString = "485702528.46952"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964887.690102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "CurrentlyPlayingViewController"
-            landmarkType = "3">
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "saveScrobble(_:timestamp:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964592.763686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "scrobble(_:timestamp:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kindio/ScrobbleManager.swift"
+            timestampString = "485964625.493898"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "scrobble(_:timestamp:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kindio.ScrobbleManager.scrobble (__ObjC.MPMediaItem, timestamp : Swift.Int) -&gt; ()"
+                  moduleName = "Kindio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alinpetrus/tryouts/Projects/Kindio/Kindio/Kindio/ScrobbleManager.swift"
+                  timestampString = "485965532.400629"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kindio.ScrobbleManager.scrobble (__ObjC.MPMediaItem, timestamp : Swift.Int) -&gt; ()"
+                  moduleName = "Kindio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alinpetrus/tryouts/Projects/Kindio/Kindio/Kindio/ScrobbleManager.swift"
+                  timestampString = "485965532.400815"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

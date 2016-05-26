@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Helper class used to get a now playing request that is ready to be executed
+
 public class LastfmNowPlayingRequest: LastfmSignedRequest {
     private var trackName: String!
     private var artistName: String!
@@ -19,7 +21,7 @@ public class LastfmNowPlayingRequest: LastfmSignedRequest {
         
         super.init(credential: credential, sessionKey: sessionKey)
         
-        self.lastfmMethod = LastfmMethod.signedMethodWithType(LastfmMethodType.NowPlaying, apiKey: self.credential.appKey, sessionKey: sessionKey)
+        self.lastfmMethod = LastfmMethod.signedMethod(LastfmMethods.Track.NowPlaying, apiKey: self.credential.appKey, sessionKey: sessionKey)
         
         self.lastfmMethod!.parameters[LastfmKeys.Track.rawValue] = trackName
         self.lastfmMethod!.parameters[LastfmKeys.Artist.rawValue] = artistName

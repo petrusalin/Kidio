@@ -175,13 +175,9 @@ class CurrentlyPlayingViewController: UIViewController, EZAudioPlayerDelegate, E
             self.currentTimeLabel.text = self.playSession.mediaPlayer.formattedCurrentTime
             self.remainingTimeLabel.text = self.playSession.mediaPlayer.formattedDuration
             
-            if (self.mediaItemScrobbled == false && audioPlayer.currentTime > audioPlayer.duration / 2) {
+            if (self.mediaItemScrobbled == false && audioPlayer.currentTime > audioPlayer.duration / 2 + 1) {
                 self.mediaItemScrobbled = true
-                LastfmManager.sharedInstance.scrobble(self.mediaItem.title!, artist: self.mediaItem.artist!, timestamp: self.mediaItemStartTimestamp, completion: { (error) in
-                    if (error != nil) {
-                        print(error)
-                    }
-                })
+                self.playSession.scrobbleManager.scrobble(self.mediaItem, timestamp: self.mediaItemStartTimestamp)
             }
         }
     }

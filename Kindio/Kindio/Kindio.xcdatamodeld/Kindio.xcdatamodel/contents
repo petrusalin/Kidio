@@ -5,11 +5,17 @@
         <attribute name="gain" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="sixBandEqualizer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SixBandEqualizerContainer" inverseName="bandAmplifications" inverseEntity="SixBandEqualizerContainer" syncable="YES"/>
     </entity>
+    <entity name="Scrobble" representedClassName=".Scrobble" syncable="YES">
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="SixBandEqualizerContainer" representedClassName="SixBandEqualizerContainer" syncable="YES">
         <relationship name="bandAmplifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EQAmplificationContainer" inverseName="sixBandEqualizer" inverseEntity="EQAmplificationContainer" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SixBandEqualizerContainer" positionX="-378" positionY="-45" width="128" height="58"/>
         <element name="EQAmplificationContainer" positionX="-182" positionY="-45" width="128" height="88"/>
+        <element name="Scrobble" positionX="-389" positionY="-214" width="128" height="88"/>
+        <element name="SixBandEqualizerContainer" positionX="-378" positionY="-45" width="128" height="58"/>
     </elements>
 </model>

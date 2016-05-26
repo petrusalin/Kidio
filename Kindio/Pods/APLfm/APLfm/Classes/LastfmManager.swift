@@ -11,7 +11,11 @@ import AFNetworking
 
 private let sharedManager = LastfmManager()
 
-
+/*!
+ *  Class that provides a shared instance that facilitates the use of lastfm requests and persist username (user defaults) and sessionToken (keychain)
+ *  Before doing any requests do a call to configureWithCredential:
+ *
+ */
 public class LastfmManager: NSObject {
     private let keychain = KeychainWrapper()
     private let usernameKey = "lastfmUsernameKey"
@@ -21,6 +25,18 @@ public class LastfmManager: NSObject {
         super.init()
         
         let manager = AFHTTPSessionManager()
+        LastfmManager.configureHTTPSessionManager(manager)
+    }
+    
+    public class var sharedInstance: LastfmManager {
+        return sharedManager
+    }
+    
+    public func configureWithCredential(lastFmCredential : LastfmCredential) {
+        self.lastFmCredential = lastFmCredential
+    }
+    
+    public class func configureHTTPSessionManager(manager: AFHTTPSessionManager) {
         manager.requestSerializer = AFJSONRequestSerializer()
         manager.requestSerializer.HTTPMethodsEncodingParametersInURI.insert("POST")
         manager.requestSerializer.stringEncoding = NSUTF8StringEncoding
@@ -30,14 +46,6 @@ public class LastfmManager: NSObject {
         
         manager.securityPolicy.allowInvalidCertificates = true
         manager.securityPolicy.validatesDomainName = false
-    }
-    
-    public class var sharedInstance: LastfmManager {
-        return sharedManager
-    }
-    
-    public func configureWithCredential(lastFmCredential : LastfmCredential) {
-        self.lastFmCredential = lastFmCredential
     }
     
     internal func saveLastfmToken(token: String) {
@@ -122,14 +130,13 @@ public class LastfmManager: NSObject {
         }
     }
     
-    public func executeRequestWithMethod(method: LastfmMethodType, parameters: [String : AnyObject], completion: (response: AnyObject?, error: NSError?) -> Void) {
-        if method == .Authentication {
+    public func executeRequestWithMethod(method: Method, parameters: [String : AnyObject], completion: (response: AnyObject?, error: NSError?) -> Void) {
+        if method.path() == LastfmMethods.Auth.GetSession.path() {
             assert(false, "Use the dedicated method for auth")
         }
         
         if self.lastFmCredential == nil {
             completion(response: nil, error: nil)
-            
             
             return
         }

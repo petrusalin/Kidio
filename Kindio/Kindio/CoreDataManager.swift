@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import MediaPlayer
 
 class CoreDataManager: NSObject {
     var databaseName: String!
@@ -101,11 +102,7 @@ class CoreDataManager: NSObject {
         
         eqContainer!.bandAmplifications = mutableSet
         
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            print("Could not save eq settings")
-        }
+        self.saveContext()
     }
     
     func equalizerSettings() -> SixBandEqualizer? {
@@ -124,6 +121,30 @@ class CoreDataManager: NSObject {
         }
         
         return nil
+    }
+    
+    func scrobbles() -> [Scrobble]? {
+        let request = NSFetchRequest.init(entityName: "Scrobble")
+        
+        do {
+            let scrobbles = try self.managedObjectContext.executeFetchRequest(request) as! [Scrobble]
+            
+            return scrobbles
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+        
+        return nil
+    }
+    
+    func saveScrobble(mediaItem: MPMediaItem, timestamp: Int) {
+        let scrobble = NSEntityDescription.insertNewObjectForEntityForName("Scrobble", inManagedObjectContext: self.managedObjectContext) as! Scrobble
+        
+        scrobble.title = mediaItem.title
+        scrobble.artist = mediaItem.artist
+        scrobble.timestamp = NSNumber.init(long: timestamp)
+        
+        self.saveContext()
     }
     
 }

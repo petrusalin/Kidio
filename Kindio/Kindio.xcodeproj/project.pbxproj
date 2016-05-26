@@ -10,6 +10,7 @@
 		251DBBE51CE61FE400620F30 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7DE3C7EBDDADDB1280CFBF /* Pods.framework */; };
 		254C56D91CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */; };
 		254C79C51CDB8EC200C7F5BA /* String+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254C79C41CDB8EC200C7F5BA /* String+Duration.swift */; };
+		254D36EA1CF42E9A0070B855 /* ScrobbleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D36E91CF42E9A0070B855 /* ScrobbleManager.swift */; };
 		2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */; };
 		2551BF531CE1DE2100A71403 /* LastfmLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */; };
 		255A2ADC1CE3273A003FF72A /* UIView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255A2ADB1CE3273A003FF72A /* UIView+Loading.swift */; };
@@ -50,6 +51,8 @@
 		2596061C1CE0B9A400FAF1C3 /* ThemedSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596061B1CE0B9A400FAF1C3 /* ThemedSlider.swift */; };
 		2596061F1CE0EC9D00FAF1C3 /* SongsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596061D1CE0EC9D00FAF1C3 /* SongsTableViewController.swift */; };
 		259606201CE0EC9D00FAF1C3 /* SongsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2596061E1CE0EC9D00FAF1C3 /* SongsTableViewController.xib */; };
+		25B2B6111CF73EAF0041D1C5 /* Scrobble+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2B60F1CF73EAF0041D1C5 /* Scrobble+CoreDataProperties.swift */; };
+		25B2B6121CF73EAF0041D1C5 /* Scrobble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2B6101CF73EAF0041D1C5 /* Scrobble.swift */; };
 		25DCE0111CD9F7DC0056DD8D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 25DCE0101CD9F7DC0056DD8D /* Podfile */; };
 		25DCE0171CDA0E6B0056DD8D /* MediaItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCE0161CDA0E6B0056DD8D /* MediaItemTableViewController.swift */; };
 		25DCE01B1CDA37260056DD8D /* CurrentlyPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCE0191CDA37260056DD8D /* CurrentlyPlayingViewController.swift */; };
@@ -60,6 +63,7 @@
 		251DBBE31CE61FD900620F30 /* APLfm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APLfm.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Kindio-hapivpvawiizhrapfttvyfrydsew/Build/Products/Debug-iphoneos/APLfm.framework"; sourceTree = "<group>"; };
 		254C56D81CDC8003008FA8F6 /* ViewControllerAudioProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioProtocol.swift; sourceTree = "<group>"; };
 		254C79C41CDB8EC200C7F5BA /* String+Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Duration.swift"; sourceTree = "<group>"; };
+		254D36E91CF42E9A0070B855 /* ScrobbleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrobbleManager.swift; sourceTree = "<group>"; };
 		2551BF4B1CE1D3EB00A71403 /* Kindio-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Kindio-Bridging-Header.h"; sourceTree = "<group>"; };
 		2551BF501CE1DE2100A71403 /* LastfmLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastfmLoginViewController.swift; sourceTree = "<group>"; };
 		2551BF511CE1DE2100A71403 /* LastfmLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastfmLoginViewController.xib; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		2596061B1CE0B9A400FAF1C3 /* ThemedSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSlider.swift; sourceTree = "<group>"; };
 		2596061D1CE0EC9D00FAF1C3 /* SongsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableViewController.swift; sourceTree = "<group>"; };
 		2596061E1CE0EC9D00FAF1C3 /* SongsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongsTableViewController.xib; sourceTree = "<group>"; };
+		25B2B60F1CF73EAF0041D1C5 /* Scrobble+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scrobble+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		25B2B6101CF73EAF0041D1C5 /* Scrobble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrobble.swift; sourceTree = "<group>"; };
 		25DCE0101CD9F7DC0056DD8D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		25DCE0161CDA0E6B0056DD8D /* MediaItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemTableViewController.swift; sourceTree = "<group>"; };
 		25DCE0191CDA37260056DD8D /* CurrentlyPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentlyPlayingViewController.swift; sourceTree = "<group>"; };
@@ -186,11 +192,14 @@
 		257EF71A1CD8968200D0D489 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				25B2B60F1CF73EAF0041D1C5 /* Scrobble+CoreDataProperties.swift */,
+				25B2B6101CF73EAF0041D1C5 /* Scrobble.swift */,
 				256A86331CF2F68D00692324 /* EQAmplificationContainer+CoreDataProperties.swift */,
 				256A86341CF2F68D00692324 /* EQAmplificationContainer.swift */,
 				256A86351CF2F68D00692324 /* SixBandEqualizerContainer+CoreDataProperties.swift */,
 				256A86361CF2F68D00692324 /* SixBandEqualizerContainer.swift */,
 				257EF71B1CD8969D00D0D489 /* CoreDataManager.swift */,
+				254D36E91CF42E9A0070B855 /* ScrobbleManager.swift */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -428,6 +437,7 @@
 				256A86391CF2F68D00692324 /* SixBandEqualizerContainer+CoreDataProperties.swift in Sources */,
 				257EF70E1CD8966D00D0D489 /* Kindio.xcdatamodeld in Sources */,
 				257EF7361CD8C5A700D0D489 /* AudioAssetCell.swift in Sources */,
+				25B2B6121CF73EAF0041D1C5 /* Scrobble.swift in Sources */,
 				256E04F81CEDA17200C5CDE3 /* BaseTableViewController.swift in Sources */,
 				2551BF521CE1DE2100A71403 /* LastfmLoginViewController.swift in Sources */,
 				256A863A1CF2F68D00692324 /* SixBandEqualizerContainer.swift in Sources */,
@@ -439,11 +449,13 @@
 				256A79DB1CEB467D00205C11 /* EqualizerTableViewController.swift in Sources */,
 				25DCE0171CDA0E6B0056DD8D /* MediaItemTableViewController.swift in Sources */,
 				257EF72B1CD89DD100D0D489 /* SettingsTableViewController.swift in Sources */,
+				25B2B6111CF73EAF0041D1C5 /* Scrobble+CoreDataProperties.swift in Sources */,
 				259606161CE0905D00FAF1C3 /* ThemeManager.swift in Sources */,
 				256E05061CEDF69200C5CDE3 /* ConfigurableEqualizerOutput.swift in Sources */,
 				256E05021CEDC07600C5CDE3 /* EQAmplification.swift in Sources */,
 				257EF7311CD8C0C700D0D489 /* PlaySession.swift in Sources */,
 				257EF71C1CD8969D00D0D489 /* CoreDataManager.swift in Sources */,
+				254D36EA1CF42E9A0070B855 /* ScrobbleManager.swift in Sources */,
 				257EF7061CD8966D00D0D489 /* AppDelegate.swift in Sources */,
 				256A86381CF2F68D00692324 /* EQAmplificationContainer.swift in Sources */,
 				2596061C1CE0B9A400FAF1C3 /* ThemedSlider.swift in Sources */,

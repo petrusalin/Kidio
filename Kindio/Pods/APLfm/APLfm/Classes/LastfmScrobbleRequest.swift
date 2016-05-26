@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Helper class used to get a scrobble request that is ready to be executed
+
 public class LastfmScrobbleRequest: LastfmSignedRequest {
     private var trackName: String!
     private var artistName: String!
@@ -20,7 +22,7 @@ public class LastfmScrobbleRequest: LastfmSignedRequest {
         
         super.init(credential: credential,  sessionKey: sessionKey)
         
-        self.lastfmMethod = LastfmMethod.signedMethodWithType(LastfmMethodType.Scrobble, apiKey: self.credential.appKey, sessionKey: sessionKey)
+        self.lastfmMethod = LastfmMethod.signedMethod(LastfmMethods.Track.Scrobble, apiKey: self.credential.appKey, sessionKey: sessionKey)
         self.lastfmMethod!.parameters[LastfmKeys.Track.rawValue] = trackName
         self.lastfmMethod!.parameters[LastfmKeys.Artist.rawValue] = artistName
         self.lastfmMethod!.parameters[LastfmKeys.Timestamp.rawValue] = timestamp

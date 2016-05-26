@@ -8,79 +8,183 @@
 
 import Foundation
 
-public enum LastfmMethodType: String {
-    case Authentication           = "auth.getMobileSession"
-
-    case NowPlaying               = "track.updateNowPlaying"
-    case Scrobble                 = "track.scrobble"
-
-    case AlbumAddTags             = "album.addTags"
-    case AlbumGetInfo             = "album.getInfo"
-    case AlbumGetTags             = "album.getTags"
-    case AlbumGetTopTags          = "album.getTopTags"
-    case AlbumRemoveTag           = "album.removeTag"
-    case AlbumSearch              = "album.search"
-
-    case ArtistAddTags            = "artist.addTags"
-    case ArtistGetCorrection      = "artist.getCorrection"
-    case ArtistGetInfo            = "artist.getInfo"
-    case ArtistGetSimilar         = "artist.getSimilar"
-    case ArtistGetTags            = "artist.getTags"
-    case ArtistGetTopAlbums       = "artist.getTopAlbums"
-    case ArtistGetTopTags         = "artist.getTopTags"
-    case ArtistGetTopTracks       = "artist.getTopTracks"
-    case ArtistRemoveTag          = "artist.removeTag"
-    case ArtistSearch             = "artist.search"
-
-    case ChartGetTopArtists       = "chart.getTopArtists"
-    case ChartGetTopTags          = "chart.getTopTags"
-    case ChartGetTopTracks        = "chart.getTopTracks"
-
-    case GeoGetTopArtists         = "geo.getTopArtists"
-    case GeoGetTopTracks          = "geo.getTopTracks"
-
-    case LibaryGetArtists         = "library.getArtists"
-
-    case TagGetInfo               = "tag.getInfo"
-    case TagGetSimilar            = "tag.getSimilar"
-    case TagGetTopAlbums          = "tag.getTopAlbums"
-    case TagGetTopArtists         = "tag.getTopArtists"
-    case TagGetTopTags            = "tag.getTopTags"
-    case TagGetTopTracks          = "tag.getTopTracks"
-    case TagGetWeeklyCharList     = "tag.getWeeklyChartList"
-
-    case TrackAddTags             = "track.addTags"
-    case TrackGetCorrection       = "track.getCorrection"
-    case TrackGetInfo             = "track.getInfo"
-    case TrackGetSimilar          = "track.getSimilar"
-    case TrackGetTags             = "track.getTags"
-    case TrackGetTopTracks        = "track.getTopTags"
-    case TrackLove                = "track.love"
-    case TrackRemoveTag           = "track.removeTag"
-    case TrackSearch              = "track.search"
-    case TrackUnlove              = "track.unlove"
-
-    case UserGetArtistTracks      = "user.getArtistTracks"
-    case UserGetFriends           = "user.getFriends"
-    case UserGetInfo              = "user.getInfo"
-    case UserGetLovedTracks       = "user.getLovedTracks"
-    case UserGetPersonalTracks    = "user.getPersonalTags"
-    case UserGetRecentTracks      = "user.getRecentTracks"
-    case UserGetTopAlbums         = "user.getTopAlbums"
-    case UserGetTopArtists        = "user.getTopArtists"
-    case UserGetTopTags           = "user.getTopTags"
-    case UserGetTopTracks         = "user.getTopTracks"
-    case UserGetWeeklyAlbumChart  = "user.getWeeklyAlbumChart"
-    case UserGetWeeklyArtistChart = "user.getWeeklyArtistChart"
-    case UserGetWeeklyChartList   = "user.getWeeklyChartList"
-    case UserGetWeeklyTrackChart  = "user.getWeeklyTrackChart"
+public protocol Method {
+    func requiresSigning() -> Bool
     
-    func requiresSigning() -> Bool {
-        switch self {
-        case .Authentication, .NowPlaying, .Scrobble, .AlbumAddTags, .AlbumRemoveTag, .ArtistAddTags, .ArtistRemoveTag, .TrackAddTags, .TrackRemoveTag, .TrackLove, .TrackUnlove:
+    func path() -> String
+}
+
+
+public enum LastfmMethods {
+    public enum Auth : String, Method {
+        case GetSession           = "auth.getMobileSession"
+        
+        public func requiresSigning() -> Bool {
             return true
-        default:
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+        
+    }
+
+    public enum Album : String, Method {
+        case AddTags              = "album.addTags"
+        case GetInfo              = "album.getInfo"
+        case GetTags              = "album.getTags"
+        case GetTopTags           = "album.getTopTags"
+        case RemoveTag            = "album.removeTag"
+        case Search               = "album.search"
+        
+        public func requiresSigning() -> Bool {
+            switch self {
+            case .AddTags, .RemoveTag:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+    }
+
+    public enum Artist : String, Method {
+        case AddTags              = "artist.addTags"
+        case GetCorrection        = "artist.getCorrection"
+        case GetInfo              = "artist.getInfo"
+        case GetSimilar           = "artist.getSimilar"
+        case GetTags              = "artist.getTags"
+        case GetTopAlbums         = "artist.getTopAlbums"
+        case GetTopTags           = "artist.getTopTags"
+        case GetTopTracks         = "artist.getTopTracks"
+        case RemoveTag            = "artist.removeTag"
+        case Search               = "artist.search"
+        
+        public func requiresSigning() -> Bool {
+            switch self {
+            case .AddTags, .RemoveTag:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+    }
+
+    public enum Chart : String, Method {
+        case GetTopArtists        = "chart.getTopArtists"
+        case GetTopTags           = "chart.getTopTags"
+        case GetTopTracks         = "chart.getTopTracks"
+        
+        public func requiresSigning() -> Bool {
             return false
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+    }
+
+    public enum Geo : String, Method {
+        case GetTopArtists        = "geo.getTopArtists"
+        case GetTopTracks         = "geo.getTopTracks"
+        
+        public func requiresSigning() -> Bool {
+            return false
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+    }
+
+    public enum Library : String, Method {
+        case GetArtists           = "library.getArtists"
+        
+        public func requiresSigning() -> Bool {
+            return false
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+    }
+
+    public enum Tag : String, Method {
+        case GetInfo              = "tag.getInfo"
+        case GetSimilar           = "tag.getSimilar"
+        case GetTopAlbums         = "tag.getTopAlbums"
+        case GetTopArtists        = "tag.getTopArtists"
+        case GetTopTags           = "tag.getTopTags"
+        case GetTopTracks         = "tag.getTopTracks"
+        case GetWeeklyCharList    = "tag.getWeeklyChartList"
+        
+        public func requiresSigning() -> Bool {
+            return false
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+        
+    }
+
+    public enum Track : String, Method {
+        case NowPlaying           = "track.updateNowPlaying"
+        case Scrobble             = "track.scrobble"
+        case AddTags              = "track.addTags"
+        case GetCorrection        = "track.getCorrection"
+        case GetInfo              = "track.getInfo"
+        case GetSimilar           = "track.getSimilar"
+        case GetTags              = "track.getTags"
+        case GetTopTracks         = "track.getTopTags"
+        case Love                 = "track.love"
+        case RemoveTag            = "track.removeTag"
+        case Search               = "track.search"
+        case Unlove               = "track.unlove"
+        
+        public func requiresSigning() -> Bool {
+            switch self {
+            case .NowPlaying, .Scrobble, .AddTags, .RemoveTag, .Love, .Unlove:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        public func path() -> String {
+            return self.rawValue
+        }
+    }
+
+    public enum User : String, Method {
+        case GetArtistTracks      = "user.getArtistTracks"
+        case GetFriends           = "user.getFriends"
+        case GetInfo              = "user.getInfo"
+        case GetLovedTracks       = "user.getLovedTracks"
+        case GetPersonalTracks    = "user.getPersonalTags"
+        case GetRecentTracks      = "user.getRecentTracks"
+        case GetTopAlbums         = "user.getTopAlbums"
+        case GetTopArtists        = "user.getTopArtists"
+        case GetTopTags           = "user.getTopTags"
+        case GetTopTracks         = "user.getTopTracks"
+        case GetWeeklyAlbumChart  = "user.getWeeklyAlbumChart"
+        case GetWeeklyArtistChart = "user.getWeeklyArtistChart"
+        case GetWeeklyChartList   = "user.getWeeklyChartList"
+        case GetWeeklyTrackChart  = "user.getWeeklyTrackChart"
+        
+        public func requiresSigning() -> Bool {
+            return false
+        }
+        
+        public func path() -> String {
+            return self.rawValue
         }
     }
 }
@@ -131,45 +235,57 @@ public enum LastfmKeys: String {
     }
 }
 
-public struct LastfmMethod {
-    var type: LastfmMethodType
-    var parameters = [String: AnyObject]()
+/*!
+ *  Structure used to define the requirememts needed to be able to make a lastfm request
+ *  It provides 3 convenience methods for the probably most used methods
+ */
+public struct LastfmMethod : Method {
+    var method: Method
+    internal var parameters = [String: AnyObject]()
     
     private init () {
-        self.type = .NowPlaying
+        self.method = LastfmMethods.Track.Scrobble
     }
     
-    
-    public init(methodType: LastfmMethodType) {
-        self.type = methodType
+    public func path() -> String {
+        return self.method.path()
     }
     
-    static func authMethodWithKey(apiKey: String) -> LastfmMethod {
-        var method = self.init(methodType: .Authentication)
-        
-        method.parameters[LastfmKeys.Method.rawValue] = method.type.rawValue
-        method.parameters[LastfmKeys.APIKey.rawValue] = apiKey
-        
-        return method
+    public func requiresSigning() -> Bool {
+        return self.method.requiresSigning()
     }
     
-    static func unsignedMethodWithType(methodType: LastfmMethodType, apiKey: String) -> LastfmMethod {
-        var method = self.init(methodType: methodType)
-        
-        method.parameters[LastfmKeys.Method.rawValue] = method.type.rawValue
-        method.parameters[LastfmKeys.APIKey.rawValue] = apiKey
-        
-        return method
+    public init(method: Method) {
+        self.method = method
     }
     
-    static func signedMethodWithType(methodType: LastfmMethodType, apiKey: String, sessionKey: String) -> LastfmMethod {
-        var method = self.init(methodType: methodType)
+    static func authMethod(apiKey: String) -> LastfmMethod {
+        var lastFmMethod = self.init(method: LastfmMethods.Auth.GetSession)
         
-        method.parameters[LastfmKeys.Method.rawValue] = method.type.rawValue
-        method.parameters[LastfmKeys.APIKey.rawValue] = apiKey
-        method.parameters[LastfmKeys.SessionKey.rawValue] = sessionKey
+        lastFmMethod.parameters[LastfmKeys.Method.rawValue] = lastFmMethod.path()
+            
+        lastFmMethod.parameters[LastfmKeys.APIKey.rawValue] = apiKey
         
-        return method
+        return lastFmMethod
+    }
+    
+    static func unsignedMethod(method: Method, apiKey: String) -> LastfmMethod {
+        var lastFmMethod = self.init(method: method)
+        
+        lastFmMethod.parameters[LastfmKeys.Method.rawValue] = lastFmMethod.path()
+        lastFmMethod.parameters[LastfmKeys.APIKey.rawValue] = apiKey
+        
+        return lastFmMethod
+    }
+    
+    static func signedMethod(method: Method, apiKey: String, sessionKey: String) -> LastfmMethod {
+        var lastFmMethod = self.init(method: method)
+        
+        lastFmMethod.parameters[LastfmKeys.Method.rawValue] = lastFmMethod.path()
+        lastFmMethod.parameters[LastfmKeys.APIKey.rawValue] = apiKey
+        lastFmMethod.parameters[LastfmKeys.SessionKey.rawValue] = sessionKey
+        
+        return lastFmMethod
     }
     
 }
