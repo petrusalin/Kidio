@@ -227,7 +227,7 @@ public enum LastfmKeys: String {
     case Period         = "period"
     
     static func keyRequiresUrlEncoding(key: String) -> Bool {
-        if (key == Artist.rawValue || key == Track.rawValue) {
+        if (key.rangeOfString(Artist.rawValue) != nil || key.rangeOfString(Track.rawValue) != nil) {
             return false
         }
         

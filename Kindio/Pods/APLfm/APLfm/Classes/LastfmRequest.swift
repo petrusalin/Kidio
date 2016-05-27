@@ -54,7 +54,7 @@ public class LastfmRequest: NSObject {
             completion(response: nil, error: error)
         }
     }
-
+    
     internal func prepareForExecute() {
         if self.lastfmMethod != nil {
             self.lastfmMethod!.parameters[LastfmKeys.Signature.rawValue] = self.signature(self.lastfmMethod!.parameters)
@@ -79,6 +79,23 @@ public class LastfmRequest: NSObject {
         concatenatedString += self.credential.secret.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
         return concatenatedString.md5()
+    }
+    
+    internal func updateParameters(parameters: [String : AnyObject]) {
+        var dict = parameters
+        
+        for (key, value) in parameters {
+            if let array = value as? [AnyObject] {
+                dict.removeValueForKey(key)
+                
+                for (index, val) in array.enumerate() {
+                    let adjustedKey = "\(key)[\(index)]"
+                    dict[adjustedKey] = val
+                }
+            }
+        }
+        
+        self.lastfmMethod!.parameters.update(dict)
     }
 }
 

@@ -67,7 +67,7 @@ class ScrobbleManager: NSObject {
                 if (error == nil) {
                     self.deleteScrobbles(scrobbles)
                 } else {
-                    print("NONONO")
+                    print("error")
                 }
             })
         }
@@ -78,7 +78,7 @@ class ScrobbleManager: NSObject {
     }
     
     private func deleteScrobble(scrobble: Scrobble, save: Bool) {
-        self.coreDataManager.managedObjectContext.delete(scrobble)
+        self.coreDataManager.managedObjectContext.deleteObject(scrobble)
         
         if (save) {
             self.coreDataManager.saveContext()

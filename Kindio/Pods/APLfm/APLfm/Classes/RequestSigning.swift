@@ -49,7 +49,7 @@ internal enum Signable : RequestSigning {
 extension String : RequestSigning {
     func concatenateToString(destinationString: String, withKey key: String) -> String {
         var string = destinationString
-        string += key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        string += key
         
         if (LastfmKeys.keyRequiresUrlEncoding(key)) {
             string += self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
@@ -65,7 +65,7 @@ extension String : RequestSigning {
 extension Int : RequestSigning {
     func concatenateToString(destinationString: String, withKey key: String) -> String {
         var string = destinationString
-        string += key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        string += key
         string += String(self)
         
         return string

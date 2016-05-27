@@ -33,7 +33,7 @@ public class LastfmSignedRequest: LastfmRequest {
         let request = LastfmSignedRequest.init(credential: credentials, sessionKey: sessionToken)
         
         request.lastfmMethod = LastfmMethod.signedMethod(method, apiKey: request.credential.appKey, sessionKey: sessionToken)
-        request.lastfmMethod!.parameters.update(parameters)
+        request.updateParameters(parameters)
         request.prepareForExecute()
         
         return request

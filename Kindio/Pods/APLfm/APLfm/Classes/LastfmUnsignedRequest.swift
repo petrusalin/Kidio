@@ -24,7 +24,7 @@ public class LastfmUnsignedRequest: LastfmRequest {
         let request = LastfmUnsignedRequest.init(credential: credentials)
         
         request.lastfmMethod = LastfmMethod.unsignedMethod(method, apiKey: request.credential.appKey)
-        request.lastfmMethod!.parameters.update(parameters)
+        request.updateParameters(parameters)
         request.prepareForExecute()
         
         return request
