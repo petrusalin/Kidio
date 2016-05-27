@@ -41,16 +41,12 @@ class ScrobbleManager: NSObject {
     }
     
     func retryPendingScrobbles() {
-        if let scrobbles = self.coreDataManager.scrobbles() {
-            if (scrobbles.count == 0) {
-                return
-            }
-            
+        if let batch = self.scrobblesBatch() {
             var artists = [String]()
             var tracks = [String]()
             var  timestamps = [Int]()
             
-            for scrobble in scrobbles {
+            for scrobble in batch {
                 if let track = scrobble.title, artist = scrobble.artist, timestamp = scrobble.timestamp {
                     artists.append(artist)
                     tracks.append(track)
@@ -62,14 +58,31 @@ class ScrobbleManager: NSObject {
             
             var dict = [String : AnyObject]()
             dict.update([LastfmKeys.Track.rawValue : tracks, LastfmKeys.Artist.rawValue : artists, LastfmKeys.Timestamp.rawValue : timestamps])
-
+            
             LastfmManager.sharedInstance.executeRequestWithMethod(LastfmMethods.Track.Scrobble, parameters: dict, completion: { (response, error) in
                 if (error == nil) {
-                    self.deleteScrobbles(scrobbles)
+                    self.deleteScrobbles(batch)
+                    self.retryPendingScrobbles()
                 } else {
                     print("error")
                 }
             })
+        }
+    }
+    
+    private func scrobblesBatch() -> [Scrobble]? {
+        if let scrobbles = self.coreDataManager.scrobbles() {
+            if (scrobbles.count == 0) {
+                return nil
+            } else {
+                if (scrobbles.count > LastfmRequest.maxRequestsPerBatch) {
+                    return Array(scrobbles[0..<LastfmRequest.maxRequestsPerBatch])
+                } else {
+                    return scrobbles
+                }
+            }
+        } else  {
+            return nil
         }
     }
     

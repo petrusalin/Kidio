@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - APLfm (0.2.3):
+  - APLfm (0.2.6):
     - AFNetworking (~> 3.0)
     - CryptoSwift
   - CryptoSwift (0.4.1)
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APLfm:
-    :commit: 3052d9e00f8af3958c33e54319e49d25618bcb36
+    :commit: c91543df32e9ffa289dfb52a53869b291c65feed
     :git: https://github.com/petrusalin/APLfm.git
   CryptoSwift:
     :commit: 2541799df3f40693aa3f635e73fc48889866fa12
@@ -51,7 +51,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  APLfm: cfeccbd6a8f9c435dd15b54a529ad723205172d4
+  APLfm: a7749205bc7b7e49bb186b304a52958610557746
   CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
   EZAudio: 3b1cb4b6d7ebca68f0c2478576d75940aad4aa99
   HUMSlider: 02b165c6be569b2cf87626fcc371a7420425efcf
